@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,11 @@ Route::middleware('auth')->group(function () {
     return view('members.dashboard.profile', ['title' => 'Profil']);
   });
 });
+
+Route::prefix('admin')->controller(AdminController::class)->middleware('auth', 'checkRole:Admin')->group(function () {
+  Route::get('/', 'index');
+  Route::get('/pendaftar', 'pendaftar');
+  Route::get('/pendaftar/{user}', 'show');
+});
+// Route::pmiddleware('auth', 'checkRole:Admin')->group(function () {
+// })

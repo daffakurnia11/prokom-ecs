@@ -10,6 +10,34 @@
     @endif
     <a href="/profil" class="fs-6 d-block text-center mt-0">Edit profil</a>
 
+    @if (auth()->user()->roles == 'Admin')
+    <div class="mt-3">
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-envelope"></i>
+        <span>{{ auth()->user()->email }}</span>
+      </p>
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-person-check-fill"></i>
+        <span>{{ auth()->user()->roles }}</span>
+      </p>
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-person-badge"></i>
+        <span>{{ isset(auth()->user()->batch) ? 'Angkatan ' . auth()->user()->batch : '-' }}</span>
+      </p>
+    </div>
+    <hr>
+    <div class="mt-3">
+      <p class="fs-6 mx-2 mb-1 fw-bold">Kontak Pribadi</p>
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-line"></i>
+        <span>{{ isset(auth()->user()->profile->line_id) ? auth()->user()->profile->line_id : '-' }}</span>
+      </p>
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-whatsapp"></i>
+        <span>{{ isset(auth()->user()->profile->whatsapp) ? auth()->user()->profile->whatsapp : '-' }}</span>
+      </p>
+    </div>
+    @else
     <div class="mt-3">
       <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
         <i class="fs-5 d-block me-2 bi bi-envelope"></i>
@@ -40,5 +68,6 @@
         <span>{{ isset(auth()->user()->profile->whatsapp) ? auth()->user()->profile->whatsapp : '-' }}</span>
       </p>
     </div>
+    @endif
   </div>
 </div>

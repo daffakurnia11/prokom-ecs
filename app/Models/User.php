@@ -35,6 +35,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'student_number';
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
