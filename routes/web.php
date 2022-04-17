@@ -34,6 +34,7 @@ Route::prefix('admin')->controller(AdminController::class)->middleware('auth', '
   Route::get('/', 'index');
   Route::get('/pendaftar', 'pendaftar');
   Route::get('/pendaftar/{user}', 'show');
+  Route::get('/pendaftar/verifikasi/{user}', 'verifying');
 });
 // Route::pmiddleware('auth', 'checkRole:Admin')->group(function () {
 // })

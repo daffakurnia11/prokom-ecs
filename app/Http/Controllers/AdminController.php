@@ -30,4 +30,12 @@ class AdminController extends Controller
             'user'      => $user
         ]);
     }
+
+    public function verifying(User $user)
+    {
+        $user->update([
+            'verified'  => TRUE
+        ]);
+        return redirect('admin/pendaftar')->with('message', 'Account verified');
+    }
 }

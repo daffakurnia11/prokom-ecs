@@ -50,6 +50,7 @@
                   <input type="text" class="form-control-plaintext py-0" readonly value="Sudah Diverifikasi">
                   @else
                   <input type="text" class="form-control-plaintext py-0" readonly value="Belum Diverifikasi">
+                  <a href="/admin/pendaftar/verifikasi/{{ $user->student_number }}">Verifikasi sekarang!</a>
                   @endif
                 </div>
               </div>
