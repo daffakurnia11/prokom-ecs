@@ -9,11 +9,10 @@
   {{-- <link rel="shortcut icon" href="/img/epw-logo/logo-bg-blue.png" type="image/x-icon"> --}}
   <!-- Plugins -->
   <link href="/vendor/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
+	{{-- <link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css"> --}}
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   {{-- Data Tables --}}
   <link href="/vendor/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-  {{-- Summernote --}}
   <!-- Bootstrap CSS -->
   <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/vendor/bootstrap/dist/css/bootstrap-extended.css" rel="stylesheet" />
@@ -29,7 +28,7 @@
   <link href="/css/admin/header-colors.css" rel="stylesheet" />
 
   {{-- Script --}}
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="/vendor/jquery/dist/jquery.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
@@ -69,18 +68,18 @@
   <script src="/vendor/metismenu/js/metisMenu.min.js"></script>
   <script src="/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
   {{-- Chartjs --}}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script> --}}
   {{-- Apex Charts --}}
-  <script src="/vendor/apexcharts-bundle/js/apexcharts.min.js"></script>
+  {{-- <script src="/vendor/apexcharts-bundle/js/apexcharts.min.js"></script> --}}
   {{-- Data Tables --}}
   <script src="/vendor/datatable/js/jquery.dataTables.min.js"></script>
   <script src="/vendor/datatable/js/dataTables.bootstrap5.min.js"></script>
   <script src="/js/table-datatable.js?modify={{ date('Ymd') }}"></script>
   {{-- Datepicker --}}
-	<script src="/vendor/bootstrap-material-datetimepicker/js/moment.min.js"></script>
-	<script src="/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
+	{{-- <script src="/vendor/bootstrap-material-datetimepicker/js/moment.min.js"></script>
+	<script src="/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script> --}}
   {{-- Summernote --}}
-  <script src="/vendor/summernote/summernote.min.js"></script>
+  {{-- <script src="/vendor/summernote/summernote.min.js"></script> --}}
   <!--app-->
   <script src="/js/app.js?modify={{ date('Ymd') }}"></script>
   <script src="/js/script.js?modify={{ date('Ymd') }}"></script>
