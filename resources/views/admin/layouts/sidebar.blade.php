@@ -21,9 +21,23 @@
     </li>
     <li class="{{ Request::is('admin/pendaftar') ? 'mm-active' : '' }}">
       <a href="/admin/pendaftar">
-        <div class="parent-icon"><i class="bi bi-people-fill"></i>
+        <div class="parent-icon"><i class="bi bi-person-plus-fill"></i>
         </div>
         <div class="menu-title">Pendaftar</div>
+      </a>
+    </li>
+    <li class="{{ Request::is('admin/kelompok') ? 'mm-active' : '' }}">
+      <a href="/admin/kelompok">
+        <div class="parent-icon"><i class="bi bi-people-fill"></i>
+        </div>
+        <div class="menu-title">Kelompok</div>
+      </a>
+    </li>
+    <li class="{{ Request::is('admin/modul') ? 'mm-active' : '' }}">
+      <a href="/admin/modul">
+        <div class="parent-icon"><i class="bi bi-journal-text"></i>
+        </div>
+        <div class="menu-title">Modul</div>
       </a>
     </li>
     

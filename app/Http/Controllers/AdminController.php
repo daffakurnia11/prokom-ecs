@@ -10,7 +10,9 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index', [
-            'title'     => 'Hallo, ' . auth()->user()->name
+            'title'         => 'Hallo, ' . auth()->user()->name,
+            'participants'  => User::where('roles', 'Member')->count(),
+            'unverified'    => User::where('roles', 'Member')->where('verified', 0)->count(),
         ]);
     }
 

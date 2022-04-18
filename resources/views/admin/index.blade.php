@@ -17,5 +17,29 @@
   </div>
   <!--end of Header-->
 
+  <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-xl-3 row-cols-xxl-6">
+    <div class="col">
+      <div class="card radius-10">
+        <div class="card-body text-center">
+          <div class="widget-icon mx-auto mb-3 bg-light-primary text-primary">
+            <i class="bi bi-person-plus-fill"></i>
+          </div>
+          <p class="mb-0">Pendaftar</p>
+          <h3 class="mt-4 mb-0">{{ $participants }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card radius-10">
+        <div class="card-body text-center">
+          <div class="widget-icon mx-auto mb-3 bg-light-primary text-danger">
+            <i class="bi bi-person-x-fill"></i>
+          </div>
+          <p class="mb-0">Perlu Verifikasi</p>
+          <h3 class="mt-4 mb-0">{{ $unverified }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
   
 @endsection
