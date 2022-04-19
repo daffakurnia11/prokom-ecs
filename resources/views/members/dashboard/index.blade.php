@@ -12,7 +12,7 @@
       <div class="col-xl-9 col-lg-8">
         <div class="card rounded shadow-sm">
           <div class="card-body">
-            <ul class="nav nav-tabs nav-fill">
+            <ul class="nav nav-tabs nav-fill mb-4">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Pengumuman</a>
               </li>
@@ -26,7 +26,20 @@
                 <a class="nav-link" href="#">Jadwal</a>
               </li>
             </ul>
-
+            @if ($announcements->isEmpty())
+              <p class="text-center">Belum ada pengumuman</p>
+            @else
+              @foreach ($announcements as $announcement)
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{ $announcement->title }}</h5>
+                  <p class="card-text">{{ $announcement->description }}</p>
+                  <p class="card-text mb-0"><small class="text-muted">Dibuat oleh <strong>{{ $announcement->user->name }}</strong></small></p>
+                  <p class="card-text"><small class="text-muted">{{ \Carbon\Carbon::parse($announcement->published_at)->diffForHumans() }}</small></p>
+                </div>
+              </div>
+              @endforeach
+            @endif
           </div>
         </div>
       </div>

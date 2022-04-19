@@ -10,6 +10,24 @@ if (flashdata) {
       confirmButtonColor: '#c6384d',
     })
   }
+  // Announcement created
+  if (flashdata == 'Announcement created') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Pengumuman berhasil dibuat!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Announcement updated
+  if (flashdata == 'Announcement updated') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Pengumuman berhasil diubah!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
 }
 
 $(function () {

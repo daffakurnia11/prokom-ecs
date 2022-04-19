@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Participant::class);
     }
+
+    public function announcement()
+    {
+        return $this->hasMany(Announcement::class);
+    }
 }

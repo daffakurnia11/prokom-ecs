@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,10 @@ Route::post('/register', [AuthController::class, 'registration']);
 
 Route::middleware('auth')->group(function () {
   Route::post('/logout', [AuthController::class, 'logout']);
-  Route::get('/', function () {
-    return view('members.dashboard.index', ['title' => 'Dashboard']);
-  });
-  Route::get('/profil', function () {
-    return view('members.dashboard.profile', ['title' => 'Profil']);
+  Route::controller(DashboardController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/profil', 'profile');
+    Route::post('/profil/{user}', 'updateProfile');
   });
 });
 
@@ -35,6 +35,11 @@ Route::prefix('admin')->controller(AdminController::class)->middleware('auth', '
   Route::get('/pendaftar', 'pendaftar');
   Route::get('/pendaftar/{user}', 'show');
   Route::get('/pendaftar/verifikasi/{user}', 'verifying');
+  Route::get('/pengumuman', 'announce');
+  Route::post('/pengumuman', 'create_announce');
+  Route::get('/pengumuman/new', 'new_announce');
+  Route::get('/pengumuman/{announcement}/edit', 'edit_announce');
+  Route::put('/pengumuman/{announcement}', 'update_announce');
 });
 // Route::pmiddleware('auth', 'checkRole:Admin')->group(function () {
 // })

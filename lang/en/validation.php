@@ -167,7 +167,9 @@ return [
         'classes'           => 'Kelas',
         'krsm'              => 'KRSM',
         'payment'           => 'Bukti bayar',
-        'screenshot'        => 'Bukti screenshot'
+        'screenshot'        => 'Bukti screenshot',
+        'line_id'           => 'Line ID',
+        'whatsapp'          => 'Whatsapp'
     ],
 
 ];

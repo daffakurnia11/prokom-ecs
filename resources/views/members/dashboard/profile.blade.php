@@ -30,7 +30,7 @@
           @endif
 
           <div class="card-body px-0 pt-0">
-            <form action="/profil/{{ auth()->user()->id }}" method="post" enctype="multipart/form-data">
+            <form action="/profil/{{ auth()->user()->student_number }}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="row">
                 <h5 class="fs-6 mt-3">Pengaturan Akun</h5>
@@ -82,7 +82,7 @@
                     <label for="university" class="form-label">Universitas*</label>
                     <div class="ms-auto position-relative">
                       <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-building"></i></div>
-                      <input type="text" readonly class="form-control @error('university') is-invalid @enderror radius-30 ps-5" id="university" name="university" placeholder="Masukkan Universitas kamu" value="{{ old('student_number', auth()->user()->profile->university ?? '') }}">
+                      <input type="text" readonly class="form-control @error('university') is-invalid @enderror radius-30 ps-5" id="university" name="university" placeholder="Masukkan Universitas kamu" value="{{ old('university', auth()->user()->profile->university ?? '') }}">
                     </div>
                     @error('university')
                     <small class="text-danger">
@@ -97,7 +97,7 @@
                     <label for="major" class="form-label">Jurusan*</label>
                     <div class="ms-auto position-relative">
                       <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-book"></i></div>
-                      <input type="text" readonly class="form-control @error('major') is-invalid @enderror radius-30 ps-5" id="major" name="major" placeholder="Masukkan Jurusan kamu" value="{{ old('student_number', auth()->user()->profile->major ?? '') }}">
+                      <input type="text" readonly class="form-control @error('major') is-invalid @enderror radius-30 ps-5" id="major" name="major" placeholder="Masukkan Jurusan kamu" value="{{ old('major', auth()->user()->profile->major ?? '') }}">
                     </div>
                     @error('major')
                     <small class="text-danger">

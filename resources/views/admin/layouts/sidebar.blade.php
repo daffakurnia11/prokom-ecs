@@ -40,6 +40,13 @@
         <div class="menu-title">Modul</div>
       </a>
     </li>
+    <li class="{{ Request::is('admin/pengumuman') ? 'mm-active' : '' }}">
+      <a href="/admin/pengumuman">
+        <div class="parent-icon"><i class="bi bi-megaphone"></i>
+        </div>
+        <div class="menu-title">Pengumuman</div>
+      </a>
+    </li>
     
     {{-- Database Menu --}}
     {{-- <li class="menu-label mt-0">Monitoring</li> --}}
