@@ -169,7 +169,12 @@ return [
         'payment'           => 'Bukti bayar',
         'screenshot'        => 'Bukti screenshot',
         'line_id'           => 'Line ID',
-        'whatsapp'          => 'Whatsapp'
+        'whatsapp'          => 'Whatsapp',
+        'activity'          => 'Nama kegiatan',
+        'date'              => 'Tanggal',
+        'time_start'        => 'Waktu mulai',
+        'time_ended'        => 'Waktu selesai',
+        'place'             => 'Tempat'
     ],
 
 ];

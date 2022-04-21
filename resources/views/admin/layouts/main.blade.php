@@ -6,13 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  {{-- <link rel="shortcut icon" href="/img/epw-logo/logo-bg-blue.png" type="image/x-icon"> --}}
   <!-- Plugins -->
   <link href="/vendor/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-	{{-- <link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css"> --}}
+  {{-- Date Time Picker --}}
+	<link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  {{-- Data Tables --}}
-  <link href="/vendor/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
   <!-- Bootstrap CSS -->
   <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="/vendor/bootstrap/dist/css/bootstrap-extended.css" rel="stylesheet" />
@@ -63,7 +61,7 @@
 
 
   <!-- Bootstrap bundle JS -->
-  <script src="/vendor/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
   <script src="/vendor/metismenu/js/metisMenu.min.js"></script>
   <script src="/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
@@ -76,8 +74,8 @@
   <script src="/vendor/datatable/js/dataTables.bootstrap5.min.js"></script>
   <script src="/js/table-datatable.js?modify={{ date('Ymd') }}"></script>
   {{-- Datepicker --}}
-	{{-- <script src="/vendor/bootstrap-material-datetimepicker/js/moment.min.js"></script>
-	<script src="/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script> --}}
+	<script src="/vendor/bootstrap-material-datetimepicker/js/moment.min.js"></script>
+	<script src="/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
   {{-- Summernote --}}
   {{-- <script src="/vendor/summernote/summernote.min.js"></script> --}}
   <!--app-->

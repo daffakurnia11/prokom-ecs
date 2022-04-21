@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use App\Models\Profile;
+use App\Models\Schedule;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -48,5 +49,26 @@ class DashboardController extends Controller
         $profile->update($validated);
 
         return back()->with('message', 'Profile updated');
+    }
+
+    public function modules()
+    {
+        return view(
+            'members.dashboard.modules',
+            [
+                'title'         => 'Berkas Pelatihan',
+            ]
+        );
+    }
+
+    public function schedules()
+    {
+        return view(
+            'members.dashboard.schedules',
+            [
+                'title'         => 'Jadwal Pelatihan',
+                'schedules'     => Schedule::all()
+            ]
+        );
     }
 }

@@ -19,6 +19,8 @@
         <div class="menu-title">Dashboard</div>
       </a>
     </li>
+
+    <li class="menu-label mt-0">Database</li>
     <li class="{{ Request::is('admin/pendaftar') ? 'mm-active' : '' }}">
       <a href="/admin/pendaftar">
         <div class="parent-icon"><i class="bi bi-person-plus-fill"></i>
@@ -33,6 +35,15 @@
         <div class="menu-title">Kelompok</div>
       </a>
     </li>
+
+    <li class="menu-label mt-0">Pengaturan Dashboard</li>
+    <li class="{{ Request::is('admin/pengumuman') ? 'mm-active' : '' }}">
+      <a href="/admin/pengumuman">
+        <div class="parent-icon"><i class="bi bi-megaphone"></i>
+        </div>
+        <div class="menu-title">Pengumuman</div>
+      </a>
+    </li>
     <li class="{{ Request::is('admin/modul') ? 'mm-active' : '' }}">
       <a href="/admin/modul">
         <div class="parent-icon"><i class="bi bi-journal-text"></i>
@@ -40,11 +51,11 @@
         <div class="menu-title">Modul</div>
       </a>
     </li>
-    <li class="{{ Request::is('admin/pengumuman') ? 'mm-active' : '' }}">
-      <a href="/admin/pengumuman">
-        <div class="parent-icon"><i class="bi bi-megaphone"></i>
+    <li class="{{ Request::is('admin/jadwal') ? 'mm-active' : '' }}">
+      <a href="/admin/jadwal">
+        <div class="parent-icon"><i class="bi bi-calendar-week"></i>
         </div>
-        <div class="menu-title">Pengumuman</div>
+        <div class="menu-title">Jadwal</div>
       </a>
     </li>
     

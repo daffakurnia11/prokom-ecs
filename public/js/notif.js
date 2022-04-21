@@ -28,6 +28,33 @@ if (flashdata) {
       confirmButtonColor: '#c6384d',
     })
   }
+  // Schedule created
+  if (flashdata == 'Schedule created') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Jadwal berhasil dibuat!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Schedule updated
+  if (flashdata == 'Schedule updated') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Jadwal berhasil diubah!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Code regenerated
+  if (flashdata == 'Code regenerated') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Kode Presensi berhasil diubah!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
 }
 
 $(function () {

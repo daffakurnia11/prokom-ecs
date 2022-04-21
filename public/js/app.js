@@ -5,10 +5,6 @@ $(function () {
 
 	// Tooltops
 
-	$(function () {
-		$('[data-bs-toggle="tooltip"]').tooltip();
-	})
-
 
 
 	$(".nav-toggle-icon").on("click", function () {

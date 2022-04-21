@@ -22,7 +22,7 @@
     <hr>
     <div class="card">
       <div class="card-header">
-        <a href="/admin/pengumuman/new" class="btn btn-primary">Buat Pengumuman Baru</a>
+        <a href="/admin/pengumuman/create" class="btn btn-primary">Buat Pengumuman Baru</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
