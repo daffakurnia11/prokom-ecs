@@ -12,4 +12,9 @@ class Schedule extends Model
     protected $fillable = [
         'activity', 'date', 'time_start', 'time_ended', 'place', 'present_code'
     ];
+
+    public function presence()
+    {
+        return $this->hasMany(Presence::class);
+    }
 }

@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profil/{user}', 'updateProfile');
     Route::get('/berkas', 'modules');
     Route::get('/jadwal', 'schedules');
+    Route::post('/onPresence/{schedule}', 'onPresence');
   });
 });
 
@@ -41,12 +42,7 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/pendaftar', 'pendaftar');
     Route::get('/pendaftar/{user}', 'show');
     Route::get('/pendaftar/verifikasi/{user}', 'verifying');
-    // Pengumuman
-    Route::get('/pengumuman', 'announce');
-    Route::post('/pengumuman', 'create_announce');
-    Route::get('/pengumuman/new', 'new_announce');
-    Route::get('/pengumuman/{announcement}/edit', 'edit_announce');
-    Route::put('/pengumuman/{announcement}', 'update_announce');
+    Route::get('/kehadiran', 'attendance');
   });
   // Pengumuman
   Route::resource('pengumuman', AnnouncementController::class)->parameter('pengumuman', 'announcement');

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Presence;
 use App\Models\Profile;
 use App\Models\Schedule;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -67,8 +69,31 @@ class DashboardController extends Controller
             'members.dashboard.schedules',
             [
                 'title'         => 'Jadwal Pelatihan',
-                'schedules'     => Schedule::all()
+                'schedules'     => Schedule::all(),
+                'presences'     => Presence::where('user_id', auth()->user()->id)->get()
             ]
         );
+    }
+
+    public function onPresence(Request $request, Schedule $schedule)
+    {
+        $validator = Validator::make($request->all(), [
+            'present_code'  => 'required|digits:6|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with('message', 'Kode Presensi salah!');
+        }
+
+        if ($request->present_code == $schedule->present_code) {
+            Presence::create([
+                'schedule_id'   => $schedule->id,
+                'user_id'       => auth()->user()->id,
+                'present_code'  => $request->present_code
+            ]);
+            return back()->with('message', 'Kehadiran tercatat!');
+        } else {
+            return back()->with('message', 'Kode Presensi salah!');
+        }
     }
 }

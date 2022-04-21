@@ -55,6 +55,24 @@ if (flashdata) {
       confirmButtonColor: '#c6384d',
     })
   }
+  // Kode Presensi salah!
+  if (flashdata == 'Kode Presensi salah!') {
+    Swal.fire({
+      icon: 'error',
+      title: flashdata,
+      text: 'Silakan masukkan kode presensi kembali.',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Kehadiran tercatat!
+  if (flashdata == 'Kehadiran tercatat!') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Terima kasih sudah hadir.',
+      confirmButtonColor: '#c6384d',
+    })
+  }
 }
 
 $(function () {

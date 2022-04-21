@@ -35,6 +35,13 @@
         <div class="menu-title">Kelompok</div>
       </a>
     </li>
+    <li class="{{ Request::is('admin/kehadiran') ? 'mm-active' : '' }}">
+      <a href="/admin/kehadiran">
+        <div class="parent-icon"><i class="bi bi-calendar-check"></i>
+        </div>
+        <div class="menu-title">Kehadiran</div>
+      </a>
+    </li>
 
     <li class="menu-label mt-0">Pengaturan Dashboard</li>
     <li class="{{ Request::is('admin/pengumuman') ? 'mm-active' : '' }}">

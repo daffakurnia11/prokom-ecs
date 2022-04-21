@@ -14,3 +14,10 @@ $(function () {
     format: 'HH:mm'
   });
 });
+
+$(function () {
+  $('.attendanceButton').on('click', function () {
+    var presenceId = $(this).attr('data-presence-id');
+    $('#attendanceForm').attr('action', "/onPresence/" + presenceId)
+  })
+})

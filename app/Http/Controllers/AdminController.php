@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Presence;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,5 +41,13 @@ class AdminController extends Controller
             'verified'  => TRUE
         ]);
         return redirect('admin/pendaftar')->with('message', 'Account verified');
+    }
+
+    public function attendance()
+    {
+        return view('admin.kehadiran', [
+            'title'     => 'Data Kehadiran',
+            'presences' => Presence::all()
+        ]);
     }
 }
