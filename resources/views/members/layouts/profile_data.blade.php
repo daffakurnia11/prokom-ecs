@@ -55,6 +55,10 @@
         <i class="fs-5 d-block me-2 bi bi-person-badge"></i>
         <span>{{ isset(auth()->user()->batch) ? 'Angkatan ' . auth()->user()->batch : '-' }}</span>
       </p>
+      <p class="mx-0 mx-sm-3 mb-2 d-flex align-items-center">
+        <i class="fs-5 d-block me-2 bi bi-people-fill"></i>
+        <span>{{ isset(auth()->user()->participant->group_number) ? 'Kelompok ' . auth()->user()->participant->group_number : '-' }}</span>
+      </p>
     </div>
     <hr>
     <div class="mt-3">

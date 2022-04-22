@@ -31,6 +31,7 @@
                 <th>NRP</th>
                 <th>Kelas</th>
                 <th>Terdaftar</th>
+                <th>Kelompok</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -43,6 +44,7 @@
                 <td class="text-center text-nowrap">{{ $user->student_number }}</td>
                 <td class="text-center">Prokom {{ $user->participant->classes }}</td>
                 <td class="text-center text-nowrap">{{ $user->created_at }}</td>
+                <td class="text-center text-nowrap">{{ $user->participant->group_number }}</td>
                 <td class="text-center">
                   @if ($user->verified)
                   <em class="text-success">Sudah Diverifikasi</em>
@@ -63,6 +65,7 @@
                 <th>NRP</th>
                 <th>Kelas</th>
                 <th>Terdaftar</th>
+                <th>Kelompok</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
