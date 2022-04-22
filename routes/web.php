@@ -50,5 +50,3 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
   Route::resource('jadwal', ScheduleController::class)->parameter('jadwal', 'schedule');
   Route::get('/jadwal/{schedule}/regenerate', [ScheduleController::class, 'regenerate']);
 });
-// Route::pmiddleware('auth', 'checkRole:Admin')->group(function () {
-// })

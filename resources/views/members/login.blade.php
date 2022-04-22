@@ -44,6 +44,13 @@
               </div>
               @endif
 
+              @if(session()->has('message') && session('message') == 'Registration Closed')
+              <div class="alert alert-danger alert-dismissible fade show radius-30 ps-4" role="alert">
+                Pendaftaran telah ditutup.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif
+
               <form action="/login" method="POST" class="form-body">
                 @csrf
                 <div class="mb-3">
@@ -71,7 +78,7 @@
                   @enderror
                 </div>
                 <div class="mb-3 text-end">	
-                  <a href="authentication-forgot-password.html">Lupa Password ?</a>
+                  <a href="#">Lupa Password ?</a>
                 </div>
                 <div class="mb-3">
                   <div class="d-grid">

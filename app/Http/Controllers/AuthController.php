@@ -13,6 +13,7 @@ class AuthController extends Controller
 {
     public function register()
     {
+        return redirect('/login')->with('message', 'Registration Closed');
         return view('members.register', [
             'title' => 'Register Akun'
         ]);
@@ -20,6 +21,7 @@ class AuthController extends Controller
 
     public function registration(Request $request)
     {
+        return redirect('/login')->with('message', 'Registration Closed');
         $validated = $request->validate([
             'name'              => 'required|max:255',
             'email'             => 'required|email:dns|max:255|unique:users',
