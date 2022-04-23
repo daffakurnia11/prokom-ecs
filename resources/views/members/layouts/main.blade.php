@@ -30,16 +30,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           @auth
-          <div class="ms-auto d-flex justify-content-center flex-column flex-sm-row align-items-center gap-3">
-            <span>Halo, {{ auth()->user()->name }}</span>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Halo, {{ auth()->user()->name }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item {{ Request::is('/') ? 'active' : '' }}" href="/">Dashboard</a></li>
+                {{-- <li><a class="dropdown-item {{ Request::is('progress') ? 'active' : '' }}" href="/progress">Progress</a></li> --}}
+                <li><a class="dropdown-item {{ Request::is('profil') ? 'active' : '' }}" href="/profil">Edit Profil</a></li>
+                <li><a class="dropdown-item {{ Request::is('password') ? 'active' : '' }}" href="/password">Ubah Password</a></li>
+              </ul>
+            </li>
+
             @if (auth()->user()->roles != 'Member')
-            <a href="/admin" class="btn btn-white btn-sm px-4 radius-30">Admin</a>
+            <li class="nav-item mx-3">
+              <a href="/admin" class="nav-link">Admin</a>
+            </li>
             @endif
-            <form action="/logout" method="post">
-              @csrf
-              <button type="submit" class="btn btn-primary btn-sm px-4 radius-30">Logout</button>
-            </form>
-          </div>
+            
+            <li class="nav-item mx-3">
+              <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-sm px-4 radius-30">Logout</button>
+              </form>
+            </li>
+          </ul>
           @else
           <div class="ms-auto d-flex justify-content-center gap-3">
             <a href="/login" class="btn btn-primary btn-sm px-4 radius-30">Login</a>

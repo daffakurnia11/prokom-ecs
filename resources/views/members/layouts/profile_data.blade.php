@@ -1,7 +1,7 @@
 <div class="card rounded shadow-sm mb-3">
   <div class="card-body">
     <div class="ratio ratio-1x1 mx-auto" style="max-width: 200px">
-      <img src="/img/{{ isset(auth()->user()->profile->photo) ? 'photo_profile/' . auth()->user()->profile->photo : 'profile.svg' }}" class="img-thumbnail rounded-circle d-block mx-auto">
+      <img src="/img/{{ isset(auth()->user()->profile->profile_pict) ? 'photo_profile/' . auth()->user()->profile->profile_pict : 'profile.svg' }}" class="img-thumbnail rounded-circle d-block mx-auto">
     </div>
     <h1 class="fs-4 mt-3 mb-0 text-center">{{ auth()->user()->name }}</h1>
 

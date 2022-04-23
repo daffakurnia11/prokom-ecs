@@ -27,9 +27,14 @@ Route::post('/register', [AuthController::class, 'registration']);
 Route::middleware('auth')->group(function () {
   Route::post('/logout', [AuthController::class, 'logout']);
   Route::controller(DashboardController::class)->group(function () {
+    // Dashboard
     Route::get('/', 'index');
+    // Profil
     Route::get('/profil', 'profile');
     Route::post('/profil/{user}', 'updateProfile');
+    // Password
+    Route::get('/password', 'password');
+    Route::post('/password/{user}', 'updatePass');
     Route::get('/berkas', 'modules');
     Route::get('/jadwal', 'schedules');
     Route::post('/onPresence/{schedule}', 'onPresence');

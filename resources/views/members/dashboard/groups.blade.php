@@ -30,9 +30,9 @@
             @if ($number)
             <h5>Kelompok {{ $number }}</h5>
             <div class="card mb-3">
-              <div class="d-flex align-items-center g-0">
-                <div class="p-4">
-                  <img src="/img/{{ isset(auth()->user()->profile->photo) ? 'photo_profile/' . auth()->user()->profile->photo : 'profile.svg' }}" class="img-fluid rounded-start" alt="...">
+              <div class="d-flex align-items-center flex-column flex-sm-row g-0">
+                <div class="ratio ratio-1x1 m-3" style="max-width: 150px">
+                  <img src="/img/{{ isset(auth()->user()->profile->profile_pict) ? 'photo_profile/' . auth()->user()->profile->profile_pict : 'profile.svg' }}" class="img-thumbnail rounded-circle d-block mx-auto">
                 </div>
                 <div class="card-body">
                   <p class="card-text mb-2"><small class="text-muted">Data Mentor</small></p>

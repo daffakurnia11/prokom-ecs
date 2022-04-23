@@ -64,7 +64,7 @@
                   </div>
                 </div>
                 
-                {{-- <div class="col-lg-6">
+                <div class="col-lg-6">
                   <div class="mb-3">
                     <label for="photo" class="form-label">Foto Profil</label>
                     <input type="file" class="form-control @error('photo') is-invalid @enderror radius-30" id="photo" name="photo" accept=".png,.jpg,.jpeg">
@@ -74,7 +74,7 @@
                     </small>
                     @enderror
                   </div>
-                </div> --}}
+                </div>
                 
                 <h5 class="fs-6 mt-3">Data Pribadi</h5>
                 <div class="col-lg-6">

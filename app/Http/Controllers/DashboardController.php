@@ -11,6 +11,7 @@ use App\Models\Profile;
 use App\Models\Schedule;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
@@ -41,6 +42,7 @@ class DashboardController extends Controller
         $validated = $request->validate([
             'name'              => 'required|max:255',
             'email'             => 'required|email:dns|max:255',
+            'photo'             => 'nullable|max:5128|mimes:png,jpg,jpeg',
             'student_number'    => 'required|max:15',
             'batch'             => 'required|min:4',
             'line_id'           => 'nullable|max:255',
@@ -50,10 +52,43 @@ class DashboardController extends Controller
         $getId = $user->id;
         $profile = Profile::firstWhere('user_id', $getId);
 
+        if ($request->hasFile('photo')) {
+            if ($profile->photo) {
+                unlink(public_path('img/photo_profile/' . $profile->photo));
+            } else {
+                $filename = $validated['name'] . '_photo.' . $validated['photo']->extension();
+                $validated['profile_pict'] = $filename;
+                $request->photo->move(public_path('img/photo_profile'), $filename);
+            }
+        }
+
         $user->update($validated);
         $profile->update($validated);
 
         return back()->with('message', 'Profile updated');
+    }
+
+    public function password()
+    {
+        return view(
+            'members.dashboard.password',
+            [
+                'title' => 'Ubah Password'
+            ]
+        );
+    }
+
+    public function updatePass(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'oldpass'           => 'required|current_password',
+            'password'          => 'required|same:repeat|min:8',
+            'repeat'            => 'required|min:8',
+        ]);
+        $user->update([
+            'password'  => Hash::make($validated['password'])
+        ]);
+        return back()->with('message', 'Password updated');
     }
 
     public function modules()
