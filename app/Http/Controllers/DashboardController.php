@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use App\Models\Group;
+use App\Models\Module;
 use App\Models\Participant;
 use App\Models\Presence;
 use App\Models\Profile;
@@ -61,6 +62,7 @@ class DashboardController extends Controller
             'members.dashboard.modules',
             [
                 'title'         => 'Berkas Pelatihan',
+                'modules'       => Module::orderBy('created_at', 'DESC')->get()
             ]
         );
     }
@@ -102,7 +104,7 @@ class DashboardController extends Controller
     public function groups()
     {
         if (auth()->user()->roles == 'Admin') {
-            $selector = auth()->user()->group->group_number;
+            $selector = auth()->user()->group->group_number ?? NULL;
         } else {
             $selector = auth()->user()->participant->group_number;
         }

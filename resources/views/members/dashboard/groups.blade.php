@@ -27,6 +27,7 @@
               </li>
             </ul>
 
+            @if ($number)
             <h5>Kelompok {{ $number }}</h5>
             <div class="card mb-3">
               <div class="d-flex align-items-center g-0">
@@ -61,6 +62,9 @@
               </li>
               @endforeach
             </ul>
+            @else
+            <h5 class="text-center">Tidak ada kelompok</h5>
+            @endif
 
           </div>
         </div>

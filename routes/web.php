@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,9 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/pendaftar', 'pendaftar');
     Route::get('/pendaftar/{user}', 'show');
     Route::get('/pendaftar/verifikasi/{user}', 'verifying');
+    // Kelompok
+    Route::get('/kelompok', 'groups');
+    // Kehadiran
     Route::get('/kehadiran', 'attendance');
   });
   // Pengumuman
@@ -50,4 +54,6 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
   // Jadwal
   Route::resource('jadwal', ScheduleController::class)->parameter('jadwal', 'schedule');
   Route::get('/jadwal/{schedule}/regenerate', [ScheduleController::class, 'regenerate']);
+  // Modul
+  Route::resource('modul', ModuleController::class)->parameter('modul', 'module');
 });

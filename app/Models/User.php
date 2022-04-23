@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Group::class);
     }
+
+    public function module()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Group;
+use App\Models\Participant;
 use App\Models\Presence;
 use App\Models\User;
 use Carbon\Carbon;
@@ -41,6 +43,15 @@ class AdminController extends Controller
             'verified'  => TRUE
         ]);
         return redirect('admin/pendaftar')->with('message', 'Account verified');
+    }
+
+    public function groups()
+    {
+        return view('admin.kelompok', [
+            'title'         => 'Data Kelompok',
+            'groups'        => Group::all(),
+            'participants'  => Participant::all()
+        ]);
     }
 
     public function attendance()

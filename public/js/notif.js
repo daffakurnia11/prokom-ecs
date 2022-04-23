@@ -46,6 +46,33 @@ if (flashdata) {
       confirmButtonColor: '#c6384d',
     })
   }
+  // Module created
+  if (flashdata == 'Module created') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Modul berhasil dibuat!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Module updated
+  if (flashdata == 'Module updated') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Modul berhasil diubah!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Module deleted
+  if (flashdata == 'Module deleted') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Modul berhasil dihapus!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
   // Code regenerated
   if (flashdata == 'Code regenerated') {
     Swal.fire({
@@ -76,7 +103,7 @@ if (flashdata) {
 }
 
 $(function () {
-  $('#deleteButton').on('click', function (e) {
+  $('.deleteButton').on('click', function (e) {
     e.preventDefault();
     Swal.fire({
       title: 'Deleting data?',

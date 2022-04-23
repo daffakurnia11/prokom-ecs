@@ -27,7 +27,22 @@
               </li>
             </ul>
 
+            @if ($modules->isEmpty())
+            <p class="text-center">Belum ada berkas</p>
 
+            @else
+              @foreach ($modules as $module)
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{ $module->module }}</h5>
+                  <p class="card-text mb-1">{{ $module->description }}</p>
+                  <a href="/files/module/{{ $module->filename }}" class="d-block mb-3">Unduh berkas!</a>
+                  <p class="card-text mb-0"><small class="text-muted">Dibuat oleh <strong>{{ $module->user->name }}</strong></small></p>
+                  <p class="card-text"><small class="text-muted">{{ \Carbon\Carbon::parse($module->published_at)->diffForHumans() }}</small></p>
+                </div>
+              </div>
+              @endforeach
+            @endif
 
           </div>
         </div>
