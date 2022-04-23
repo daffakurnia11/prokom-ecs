@@ -101,12 +101,18 @@ class DashboardController extends Controller
 
     public function groups()
     {
+        if (auth()->user()->roles == 'Admin') {
+            $selector = auth()->user()->group->group_number;
+        } else {
+            $selector = auth()->user()->participant->group_number;
+        }
         return view(
             'members.dashboard.groups',
             [
                 'title'         => 'Kelompok Pelatihan',
-                'participants'  => Participant::where('group_number', auth()->user()->participant->group_number)->get(),
-                'group'         => Group::firstWhere('group_number', auth()->user()->participant->group_number)
+                'number'        => $selector,
+                'participants'  => Participant::where('group_number', $selector)->get(),
+                'group'         => Group::firstWhere('group_number', $selector)
             ]
         );
     }

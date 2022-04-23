@@ -27,7 +27,7 @@
               </li>
             </ul>
 
-            <h5>Kelompok {{ auth()->user()->participant->group_number }}</h5>
+            <h5>Kelompok {{ $number }}</h5>
             <div class="card mb-3">
               <div class="d-flex align-items-center g-0">
                 <div class="p-4">
