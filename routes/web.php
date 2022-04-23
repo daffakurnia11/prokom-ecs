@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/berkas', 'modules');
     Route::get('/jadwal', 'schedules');
     Route::post('/onPresence/{schedule}', 'onPresence');
+    Route::get('/kelompok', 'groups');
   });
 });
 

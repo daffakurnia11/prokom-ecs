@@ -22,6 +22,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/jadwal">Jadwal</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/kelompok">Kelompok</a>
+              </li>
             </ul>
 
 

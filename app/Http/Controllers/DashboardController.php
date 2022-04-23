@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Group;
+use App\Models\Participant;
 use App\Models\Presence;
 use App\Models\Profile;
 use App\Models\Schedule;
@@ -95,5 +97,17 @@ class DashboardController extends Controller
         } else {
             return back()->with('message', 'Kode Presensi salah!');
         }
+    }
+
+    public function groups()
+    {
+        return view(
+            'members.dashboard.groups',
+            [
+                'title'         => 'Kelompok Pelatihan',
+                'participants'  => Participant::where('group_number', auth()->user()->participant->group_number)->get(),
+                'group'         => Group::firstWhere('group_number', auth()->user()->participant->group_number)
+            ]
+        );
     }
 }
