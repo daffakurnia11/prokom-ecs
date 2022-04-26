@@ -35,12 +35,26 @@
         <div class="menu-title">Kelompok</div>
       </a>
     </li>
-    <li class="{{ Request::is('admin/kehadiran') ? 'mm-active' : '' }}">
-      <a href="/admin/kehadiran">
+    <li class="{{ Request::is('admin/kehadiran**') ? 'mm-active' : '' }}">
+      <a href="#" class="has-arrow">
         <div class="parent-icon"><i class="bi bi-calendar-check"></i>
         </div>
         <div class="menu-title">Kehadiran</div>
       </a>
+      <ul class="mm-collapse {{ Request::is('admin/kehadiran**') ? 'mm-show' : '' }}">
+        <li class="{{ Request::is('admin/kehadiran/briefing') ? 'mm-active' : '' }}"> 
+          <a href="/admin/kehadiran/briefing"><i class="bi bi-arrow-right-short"></i>Briefing Pelatihan</a>
+        </li>
+        <li class="{{ Request::is('admin/kehadiran/p1') ? 'mm-active' : '' }}"> 
+          <a href="/admin/kehadiran/p1"><i class="bi bi-arrow-right-short"></i>P1 Dasar C++</a>
+        </li>
+        <li class="{{ Request::is('admin/kehadiran/p2') ? 'mm-active' : '' }}"> 
+          <a href="/admin/kehadiran/p2"><i class="bi bi-arrow-right-short"></i>P2 GUI</a>
+        </li>
+        <li class="{{ Request::is('admin/kehadiran/p3') ? 'mm-active' : '' }}"> 
+          <a href="/admin/kehadiran/p3"><i class="bi bi-arrow-right-short"></i>P3 Database</a>
+        </li>
+      </ul>
     </li>
 
     <li class="menu-label mt-0">Pengaturan Dashboard</li>

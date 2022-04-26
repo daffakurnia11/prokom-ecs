@@ -100,6 +100,24 @@ if (flashdata) {
       confirmButtonColor: '#c6384d',
     })
   }
+  // Member attended
+  if (flashdata == 'Member attended') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Peserta telah dikonfirmasi hadir!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // Member permitted
+  if (flashdata == 'Member permitted') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Peserta telah diizinkan tidak hadir!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
 }
 
 $(function () {

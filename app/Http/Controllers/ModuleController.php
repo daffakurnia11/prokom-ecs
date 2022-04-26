@@ -43,7 +43,7 @@ class ModuleController extends Controller
         $validated = $request->validate([
             'module'        => 'required|max:255',
             'description'   => 'nullable|max:255',
-            'filename'      => 'required|mimes:pdf|max:5128'
+            'filename'      => 'required'
         ]);
 
         if ($request->hasFile('filename')) {

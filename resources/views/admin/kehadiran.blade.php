@@ -34,13 +34,40 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($presences as $presence)
+              @foreach ($users as $user)
               <tr>
                 <td class="text-center text-nowrap">{{ $loop->iteration }}</td>
-                <td class="text-nowrap">{{ $presence->user->name }}</td>
-                <td class="text-center text-nowrap">{{ $presence->user->student_number }}</td>
-                <td class="text-nowrap">{{ $presence->schedule->activity }}</td>
-                <td class="text-center text-nowrap">{{ $presence->created_at }}</td>
+                <td class="text-nowrap">{{ $user->name }}</td>
+                <td class="text-center text-nowrap">{{ $user->student_number }}</td>
+                @if ($user->presence)
+                  @php
+                    $attend = FALSE
+                  @endphp
+                  @foreach ($user->presence as $presence)
+                    @if ($presence->schedule_id == $schedule)
+                      @php
+                        $attend = TRUE
+                      @endphp
+                      <td class="text-nowrap text-center">
+                        @if ($presence->present_code == 'Permit')
+                        <span class="text-primary">Izin</span>
+                        @else
+                        <span class="text-success">Hadir</span>
+                        @endif
+                      </td>
+                      <td class="text-center text-nowrap">{{ $presence->created_at }}</td>
+                    @endif
+                  @endforeach
+                  @if ($attend == FALSE)
+                  <td class="text-nowrap text-center">
+                    <span class="text-danger">Tidak hadir</span>
+                  </td>
+                  <td class="text-center">
+                    <a class="text-success" href="/admin/kehadiran/setAttend?schedule={{ $schedule }}&user={{ $user->id }}">Hadirkan!</a>
+                    <a class="text-primaary" href="/admin/kehadiran/setPermission?schedule={{ $schedule }}&user={{ $user->id }}">Izinkan!</a>
+                  </td>
+                  @endif
+                @endif
               </tr>
               @endforeach
             </tbody>

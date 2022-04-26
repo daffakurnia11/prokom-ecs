@@ -53,12 +53,4 @@ class AdminController extends Controller
             'participants'  => Participant::all()
         ]);
     }
-
-    public function attendance()
-    {
-        return view('admin.kehadiran', [
-            'title'     => 'Data Kehadiran',
-            'presences' => Presence::all()
-        ]);
-    }
 }

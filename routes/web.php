@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ModuleController;
@@ -51,8 +52,15 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/pendaftar/verifikasi/{user}', 'verifying');
     // Kelompok
     Route::get('/kelompok', 'groups');
-    // Kehadiran
-    Route::get('/kehadiran', 'attendance');
+  });
+  // Kehadiran
+  Route::controller(AttendanceController::class)->prefix('kehadiran')->group(function () {
+    Route::get('/briefing', 'briefing');
+    Route::get('/p1', 'p1');
+    Route::get('/p2', 'p2');
+    Route::get('/p3', 'p3');
+    Route::get('/setAttend', 'setAttend');
+    Route::get('/setPermission', 'setPermission');
   });
   // Pengumuman
   Route::resource('pengumuman', AnnouncementController::class)->parameter('pengumuman', 'announcement');

@@ -45,7 +45,7 @@
         </div>
         <div class="mb-3">
           <label for="filename" class="form-label">Upload File Modul</label>
-          <input class="form-control" type="file" name="filename" id="filename" accept=".pdf">
+          <input class="form-control" type="file" name="filename" id="filename">
           @error('filename')
           <div class="invalid-feedback">
             {{ $message }}
