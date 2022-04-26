@@ -26,6 +26,21 @@ class DashboardController extends Controller
             ]
         );
     }
+    public function progress()
+    {
+        $total = Schedule::count();
+        $attend = Presence::where('user_id', auth()->user()->id)->count();
+        $progress = ($attend / $total) * 100;
+        return view(
+            'members.dashboard.progress',
+            [
+                'title'         => 'My Progress',
+                'schedules'     => Schedule::all(),
+                'presences'     => Presence::where('user_id', auth()->user()->id)->get(),
+                'progress'      => $progress
+            ]
+        );
+    }
 
     public function profile()
     {

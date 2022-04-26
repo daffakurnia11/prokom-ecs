@@ -4,7 +4,7 @@
     
 <!--start content-->
 <main id="dashboard">
-  <div class="container py-3">
+  <div class="container mb-5 py-3">
     <div class="row">
       <div class="col-xl-3 col-lg-4">
         @include('members.layouts.profile_data')
@@ -12,20 +12,22 @@
       <div class="col-xl-9 col-lg-8">
         <div class="card rounded shadow-sm">
           <div class="card-body">
-            <ul class="nav nav-tabs nav-fill mb-4">
-              <li class="nav-item">
-                <a class="nav-link active" href="/">Pengumuman</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/berkas">Berkas Pelatihan</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/jadwal">Jadwal</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/kelompok">Kelompok</a>
-              </li>
-            </ul>
+            
+            @include('members.layouts.navigation')
+
+            <div class="alert border-0 bg-light-info alert-dismissible fade show py-2">
+              <div class="d-flex align-items-center">
+                <div class="fs-3 text-info"><i class="bi bi-info-circle-fill"></i>
+                </div>
+                <div class="ms-3">
+                  <div class="text-info">
+                    <strong>NEW FEATURES!</strong>
+                    Update Profile Picture, Change Password, and Participants Progress
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
 
             @if ($announcements->isEmpty())
               <p class="text-center">Belum ada pengumuman</p>

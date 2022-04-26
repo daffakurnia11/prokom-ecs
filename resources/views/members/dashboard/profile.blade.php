@@ -3,8 +3,8 @@
 @section('content')
     
 <!--start content-->
-<main id="dashboard" class="mb-5">
-  <div class="container py-3">
+<main id="dashboard">
+  <div class="container mb-5 py-3">
     <div class="row">
       <div class="col-xl-3 col-lg-4">
         @include('members.layouts.profile_data')

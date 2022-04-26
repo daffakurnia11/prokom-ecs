@@ -36,20 +36,24 @@
                 Halo, {{ auth()->user()->name }}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item {{ Request::is('/') ? 'active' : '' }}" href="/">Dashboard</a></li>
-                {{-- <li><a class="dropdown-item {{ Request::is('progress') ? 'active' : '' }}" href="/progress">Progress</a></li> --}}
                 <li><a class="dropdown-item {{ Request::is('profil') ? 'active' : '' }}" href="/profil">Edit Profil</a></li>
                 <li><a class="dropdown-item {{ Request::is('password') ? 'active' : '' }}" href="/password">Ubah Password</a></li>
               </ul>
             </li>
+            <li class="nav-item mx-2">
+              <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Dashboard</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="/progress" class="nav-link {{ Request::is('progress') ? 'active' : '' }}">Progress</a>
+            </li>
 
             @if (auth()->user()->roles != 'Member')
-            <li class="nav-item mx-3">
+            <li class="nav-item mx-2">
               <a href="/admin" class="nav-link">Admin</a>
             </li>
             @endif
             
-            <li class="nav-item mx-3">
+            <li class="nav-item mx-2">
               <form action="/logout" method="post">
                 @csrf
                 <button type="submit" class="btn btn-primary btn-sm px-4 radius-30">Logout</button>

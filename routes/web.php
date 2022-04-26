@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
   Route::controller(DashboardController::class)->group(function () {
     // Dashboard
     Route::get('/', 'index');
+    // Progress
+    Route::get('/progress', 'progress');
     // Profil
     Route::get('/profil', 'profile');
     Route::post('/profil/{user}', 'updateProfile');
