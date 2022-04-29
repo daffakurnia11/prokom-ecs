@@ -6,9 +6,9 @@
     <a class="nav-link {{ Request::is('berkas') ? 'active' : '' }}" href="/berkas">Berkas Pelatihan</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link {{ Request::is('jadwal') ? 'active' : '' }}" href="/jadwal">Jadwal</a>
+    <a class="nav-link {{ Request::is('penugasan') ? 'active' : '' }}" href="/penugasan">Penugasan</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link {{ Request::is('kelompok') ? 'active' : '' }}" href="/kelompok">Kelompok</a>
+    <a class="nav-link {{ Request::is('jadwal') ? 'active' : '' }}" href="/jadwal">Jadwal</a>
   </li>
 </ul>

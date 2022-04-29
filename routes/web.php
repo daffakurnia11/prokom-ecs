@@ -35,13 +35,17 @@ Route::middleware('auth')->group(function () {
     // Profil
     Route::get('/profil', 'profile');
     Route::post('/profil/{user}', 'updateProfile');
+    // Kelompok
+    Route::get('/kelompok', 'groups');
     // Password
     Route::get('/password', 'password');
     Route::post('/password/{user}', 'updatePass');
     Route::get('/berkas', 'modules');
     Route::get('/jadwal', 'schedules');
     Route::post('/onPresence/{schedule}', 'onPresence');
-    Route::get('/kelompok', 'groups');
+    // Penugasan
+    Route::get('/penugasan', 'assignment');
+    Route::post('/penugasan', 'submission');
   });
 });
 

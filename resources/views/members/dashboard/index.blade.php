@@ -22,7 +22,7 @@
                 <div class="ms-3">
                   <div class="text-info">
                     <strong>NEW FEATURES!</strong>
-                    Update Profile Picture, Change Password, and Participants Progress
+                    Update Submission Uploading Form
                   </div>
                 </div>
               </div>

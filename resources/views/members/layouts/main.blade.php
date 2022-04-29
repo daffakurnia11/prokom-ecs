@@ -46,6 +46,9 @@
             <li class="nav-item mx-2">
               <a href="/progress" class="nav-link {{ Request::is('progress') ? 'active' : '' }}">Progress</a>
             </li>
+            <li class="nav-item mx-2">
+              <a href="/kelompok" class="nav-link {{ Request::is('kelompok') ? 'active' : '' }}">Kelompok</a>
+            </li>
 
             @if (auth()->user()->roles != 'Member')
             <li class="nav-item mx-2">

@@ -9,6 +9,7 @@ use App\Models\Participant;
 use App\Models\Presence;
 use App\Models\Profile;
 use App\Models\Schedule;
+use App\Models\Submission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -167,5 +168,35 @@ class DashboardController extends Controller
                 'group'         => Group::firstWhere('group_number', $selector)
             ]
         );
+    }
+
+    public function assignment()
+    {
+        return view(
+            'members.dashboard.assignment',
+            [
+                'title'         => 'Penugasan Pelatihan',
+                'submission'    => Submission::where('module', 'P1')->firstWhere('user_id', auth()->user()->id)
+            ]
+        );
+    }
+
+    public function submission(Request $request)
+    {
+        $validated = $request->validate([
+            'file'      => 'required|mimes:zip',
+            'notes'     => 'nullable'
+        ]);
+
+        $validated['user_id'] = auth()->user()->id;
+        $validated['group_number'] = auth()->user()->participant->group_number;
+        $validated['module'] = 'P1';
+
+        $filename = auth()->user()->student_number . '_Submission.' . $validated['file']->extension();
+        $validated['file'] = $filename;
+        $request->file->move(public_path('files/submission'), $filename);
+
+        Submission::create($validated);
+        return back()->with('message', 'Submitted');
     }
 }

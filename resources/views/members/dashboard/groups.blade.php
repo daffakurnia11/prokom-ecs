@@ -12,8 +12,6 @@
       <div class="col-xl-9 col-lg-8">
         <div class="card rounded shadow-sm">
           <div class="card-body">
-            
-            @include('members.layouts.navigation')
 
             @if ($number)
             <h5>Kelompok {{ $number }}</h5>
