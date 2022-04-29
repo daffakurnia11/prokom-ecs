@@ -72,6 +72,13 @@
         <div class="menu-title">Modul</div>
       </a>
     </li>
+    <li class="{{ Request::is('admin/penugasan') ? 'mm-active' : '' }}">
+      <a href="/admin/penugasan">
+        <div class="parent-icon"><i class="bi bi-journal-check"></i>
+        </div>
+        <div class="menu-title">Penugasan</div>
+      </a>
+    </li>
     <li class="{{ Request::is('admin/jadwal') ? 'mm-active' : '' }}">
       <a href="/admin/jadwal">
         <div class="parent-icon"><i class="bi bi-calendar-week"></i>

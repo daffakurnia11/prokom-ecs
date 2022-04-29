@@ -5,9 +5,11 @@
   <li class="nav-item">
     <a class="nav-link {{ Request::is('berkas') ? 'active' : '' }}" href="/berkas">Berkas Pelatihan</a>
   </li>
+  @if (auth()->user()->roles == 'Member')
   <li class="nav-item">
     <a class="nav-link {{ Request::is('penugasan') ? 'active' : '' }}" href="/penugasan">Penugasan</a>
   </li>
+  @endif
   <li class="nav-item">
     <a class="nav-link {{ Request::is('jadwal') ? 'active' : '' }}" href="/jadwal">Jadwal</a>
   </li>

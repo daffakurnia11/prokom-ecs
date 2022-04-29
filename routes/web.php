@@ -75,4 +75,5 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
   Route::get('/jadwal/{schedule}/regenerate', [ScheduleController::class, 'regenerate']);
   // Modul
   Route::resource('modul', ModuleController::class)->parameter('modul', 'module');
+  Route::get('/penugasan', [ModuleController::class, 'submission']);
 });

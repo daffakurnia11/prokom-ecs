@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Module;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller
@@ -122,5 +123,13 @@ class ModuleController extends Controller
 
         $module->delete();
         return redirect('admin/modul')->with('message', 'Module deleted');
+    }
+
+    public function submission()
+    {
+        return view('admin.modul.submission', [
+            'title'         => 'Daftar Modul',
+            'submission'    => Submission::all()
+        ]);
     }
 }
