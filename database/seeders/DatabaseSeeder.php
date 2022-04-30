@@ -38,6 +38,42 @@ class DatabaseSeeder extends Seeder
         // $profile->whatsapp      = '';
         // $profile->save();
 
-        Group::factory(14)->create();
+        $user = new User;
+        $user->name             = 'Muhammad Ichsan Ghifari';
+        $user->email            = 'ghifargip7@gmail.com';
+        $user->password         = Hash::make('02311940000139');
+        $user->verified         = TRUE;
+        $user->student_number   = '02311940000139';
+        $user->batch            = '2019';
+        $user->roles            = 'Admin';
+        $user->save();
+        $getId = $user->id;
+        $profile = new Profile;
+        $profile->user_id       = $getId;
+        $profile->university    = 'Institut Teknologi Sepuluh Nopember';
+        $profile->major         = 'Teknik Fisika';
+        $profile->line_id       = 'ghifarijames';
+        $profile->whatsapp      = '081224022747';
+        $profile->save();
+
+        $user = new User;
+        $user->name             = 'Dimas Akbar Ferdiansyah';
+        $user->email            = 'dimasakbar0152@gmail.com';
+        $user->password         = Hash::make('0231111940000120');
+        $user->verified         = TRUE;
+        $user->student_number   = '0231111940000120';
+        $user->batch            = '2019';
+        $user->roles            = 'Admin';
+        $user->save();
+        $getId = $user->id;
+        $profile = new Profile;
+        $profile->user_id       = $getId;
+        $profile->university    = 'Institut Teknologi Sepuluh Nopember';
+        $profile->major         = 'Teknik Fisika';
+        $profile->line_id       = 'itami_ryuuza';
+        $profile->whatsapp      = '0895397845356';
+        $profile->save();
+
+        // Group::factory(14)->create();
     }
 }

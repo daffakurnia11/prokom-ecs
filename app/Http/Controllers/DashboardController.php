@@ -11,6 +11,7 @@ use App\Models\Profile;
 use App\Models\Schedule;
 use App\Models\Submission;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -172,11 +173,21 @@ class DashboardController extends Controller
 
     public function assignment()
     {
+        $timenow = Carbon::now();
+        $deadline = Carbon::create(2022, 5, 1, 23, 59 - 24, 0);
+
+        if ($deadline->greaterThan($timenow)) {
+            $form_open = TRUE;
+        } else {
+            $form_open = FALSE;
+        }
+
         return view(
             'members.dashboard.assignment',
             [
                 'title'         => 'Penugasan Pelatihan',
-                'submission'    => Submission::where('module', 'P1')->firstWhere('user_id', auth()->user()->id)
+                'submission'    => Submission::where('module', 'P1')->firstWhere('user_id', auth()->user()->id),
+                'form_open'     => $form_open
             ]
         );
     }

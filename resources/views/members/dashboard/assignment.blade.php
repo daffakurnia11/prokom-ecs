@@ -27,136 +27,168 @@
             </div>
             @endif
     
+            
+            @if ($form_open)
+              <div class="alert border-0 border-warning border-start border-4 bg-light-warning  fade show py-2">
+                <div class="d-flex align-items-center">
+                  <div class="fs-3 text-warning"><i class="bi bi-exclamation-triangle-fill"></i>
+                  </div>
+                  <div class="ms-3">
+                    <div class="text-warning">
+                      <strong>DEADLINE!</strong>
+                      Modul P1 - Dasar C++ : Minggu, 1 Mei 2022 Pukul 23.59 WTF
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @else 
+              <div class="alert border-0 border-warning border-start border-4 bg-light-warning  fade show py-2">
+                <div class="d-flex align-items-center">
+                  <div class="fs-3 text-warning"><i class="bi bi-exclamation-triangle-fill"></i>
+                  </div>
+                  <div class="ms-3">
+                    <div class="text-warning">
+                      <strong>SUBMISSION FORM HAS BEEN CLOSED!</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @endif
+
             @if ($submission)
-            <p class="card-text">Selamat! Kamu sudah menyelesaikan penugasan yang sudah diberikan.</p>
-            <div class="mb-1 row">
-              <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
-              <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="name" value="{{ $submission->user->name }}">
+              <div>
+                <p class="card-text">Selamat! Kamu sudah menyelesaikan penugasan yang sudah diberikan.</p>
+                <div class="mb-1 row">
+                  <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="name" value="{{ $submission->user->name }}">
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="student_number" class="col-sm-2 col-form-label">NRP</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="student_number" value="{{ $submission->user->student_number }}">
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="group_number" class="col-sm-2 col-form-label">Kelompok</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="group_number" value="{{ $submission->user->participant->group_number }}">
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="module" class="col-sm-2 col-form-label">Kelompok</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->module == 'P1' ? 'Modul P1 - Dasar C++' : '' }}">
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="file" class="col-sm-2 col-form-label">Berkas</label>
+                  <div class="col-sm-10">
+                    <a href="files/submission/{{ $submission->file }}" class="py-2 d-block">{{ $submission->file }}</a>
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="file" class="col-sm-2 col-form-label">Catatan</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->notes }}">
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="mb-1 row">
-              <label for="student_number" class="col-sm-2 col-form-label">NRP</label>
-              <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="student_number" value="{{ $submission->user->student_number }}">
-              </div>
-            </div>
-            <div class="mb-1 row">
-              <label for="group_number" class="col-sm-2 col-form-label">Kelompok</label>
-              <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="group_number" value="{{ $submission->user->participant->group_number }}">
-              </div>
-            </div>
-            <div class="mb-1 row">
-              <label for="module" class="col-sm-2 col-form-label">Kelompok</label>
-              <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->module == 'P1' ? 'Modul P1 - Dasar C++' : '' }}">
-              </div>
-            </div>
-            <div class="mb-1 row">
-              <label for="file" class="col-sm-2 col-form-label">Berkas</label>
-              <div class="col-sm-10">
-                <a href="files/submission/{{ $submission->file }}" class="py-2 d-block">{{ $submission->file }}</a>
-              </div>
-            </div>
-            <div class="mb-1 row">
-              <label for="file" class="col-sm-2 col-form-label">Catatan</label>
-              <div class="col-sm-10">
-                <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->notes }}">
-              </div>
-            </div>
             @else
-            <div class="card-body px-0 pt-0">
-              <form action="/penugasan" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                  <h5 class="fs-6 mt-3">Data Diri</h5>
-                  <div class="col-lg-6">
-                    <div class="mb-3">
-                      <label for="name" class="form-label">Nama Lengkap*</label>
-                      <div class="ms-auto position-relative">
-                        <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                        <input type="text" readonly class="form-control @error('name') is-invalid @enderror radius-30 ps-5" id="name" name="name" placeholder="Masukkan nama lengkap" value="{{ old('name', auth()->user()->name) }}">
+              @if ($form_open)
+              <div class="card-body px-0 pt-0">
+                <form action="/penugasan" method="post" enctype="multipart/form-data">
+                  @csrf
+                  <div class="row">
+                    <h5 class="fs-6 mt-3">Data Diri</h5>
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Nama Lengkap*</label>
+                        <div class="ms-auto position-relative">
+                          <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
+                          <input type="text" readonly class="form-control @error('name') is-invalid @enderror radius-30 ps-5" id="name" name="name" placeholder="Masukkan nama lengkap" value="{{ old('name', auth()->user()->name) }}">
+                        </div>
+                        @error('name')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
                       </div>
-                      @error('name')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                      @enderror
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mb-3">
-                      <label for="student_number" class="form-label">NRP*</label>
-                      <div class="ms-auto position-relative">
-                        <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                        <input type="text" readonly class="form-control @error('student_number') is-invalid @enderror radius-30 ps-5" id="student_number" name="student_number" placeholder="Masukkan nama lengkap" value="{{ old('student_number', auth()->user()->student_number) }}">
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="student_number" class="form-label">NRP*</label>
+                        <div class="ms-auto position-relative">
+                          <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
+                          <input type="text" readonly class="form-control @error('student_number') is-invalid @enderror radius-30 ps-5" id="student_number" name="student_number" placeholder="Masukkan nama lengkap" value="{{ old('student_number', auth()->user()->student_number) }}">
+                        </div>
+                        @error('student_number')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
                       </div>
-                      @error('student_number')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                      @enderror
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mb-3">
-                      <label for="group_number" class="form-label">Kelompok*</label>
-                      <div class="ms-auto position-relative">
-                        <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                        <input type="text" readonly class="form-control @error('group_number') is-invalid @enderror radius-30 ps-5" id="group_number" name="group_number" placeholder="Masukkan nama lengkap" value="{{ old('group_number', auth()->user()->participant->group_number) }}">
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="group_number" class="form-label">Kelompok*</label>
+                        <div class="ms-auto position-relative">
+                          <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
+                          <input type="text" readonly class="form-control @error('group_number') is-invalid @enderror radius-30 ps-5" id="group_number" name="group_number" placeholder="Masukkan nama lengkap" value="{{ old('group_number', auth()->user()->participant->group_number) }}">
+                        </div>
+                        @error('group_number')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
                       </div>
-                      @error('group_number')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                      @enderror
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mb-3">
-                      <label for="module" class="form-label">Materi*</label>
-                      <div class="ms-auto position-relative">
-                        <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                        <input type="text" readonly class="form-control @error('module') is-invalid @enderror radius-30 ps-5" id="module" name="module" placeholder="Masukkan nama lengkap" value="{{ old('module', "P1 - Dasar C++") }}">
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        <label for="module" class="form-label">Materi*</label>
+                        <div class="ms-auto position-relative">
+                          <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
+                          <input type="text" readonly class="form-control @error('module') is-invalid @enderror radius-30 ps-5" id="module" name="module" placeholder="Masukkan nama lengkap" value="{{ old('module', "P1 - Dasar C++") }}">
+                        </div>
+                        @error('module')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
                       </div>
-                      @error('module')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                      @enderror
+                    </div>
+                    <h5 class="fs-6 mt-3">Data Penugasan</h5>
+                    <div class="col-lg-12">
+                      <div class="mb-3">
+                        <label for="file" class="form-label">File Penugasan (format .zip)*</label>
+                        <input type="file" class="form-control @error('file') is-invalid @enderror radius-30" id="file" name="file" value="{{ old('file') }}">
+                        @error('file')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="mb-3">
+                        <label for="notes" class="form-label">Catatan Reviewer</label>
+                        <textarea class="form-control @error('notes') is-invalid @enderror" id="notes" name="notes" value="{{ old('notes') }}"></textarea>
+                        @error('notes')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
+                      </div>
                     </div>
                   </div>
-                  <h5 class="fs-6 mt-3">Data Penugasan</h5>
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label for="file" class="form-label">File Penugasan (format .zip)*</label>
-                      <input type="file" class="form-control @error('file') is-invalid @enderror radius-30" id="file" name="file" value="{{ old('file') }}">
-                      @error('file')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                      @enderror
-                    </div>
+                  <p class="text-danger">*) Wajib diisi!</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-primary d-block radius-30 px-5">Upload Penugasan</button>
                   </div>
-                  <div class="col-lg-12">
-                    <div class="mb-3">
-                      <label for="notes" class="form-label">Catatan Reviewer</label>
-                      <textarea class="form-control @error('notes') is-invalid @enderror" id="notes" name="notes" value="{{ old('notes') }}"></textarea>
-                      @error('notes')
-                      <small class="text-danger">
-                        {{ $message }}
-                      </small>
-                      @enderror
-                    </div>
-                  </div>
-                </div>
-                <p class="text-danger">*) Wajib diisi!</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <button type="submit" class="btn btn-primary d-block radius-30 px-5">Upload Penugasan</button>
-                </div>
-              </form>
-            </div>
+                </form>
+              </div>
+              @endif
             @endif
 
           </div>
