@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function () {
   Route::controller(AdminController::class)->group(function () {
     Route::get('/', 'index');
+    // Data Admin
+    Route::get('/data', 'data');
     // Pendaftar
     Route::get('/pendaftar', 'pendaftar');
     Route::get('/pendaftar/{user}', 'show');

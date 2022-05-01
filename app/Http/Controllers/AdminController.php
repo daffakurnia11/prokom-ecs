@@ -21,6 +21,14 @@ class AdminController extends Controller
         ]);
     }
 
+    public function data()
+    {
+        return view('admin.admin', [
+            'title'         => 'Data Admin',
+            'admins'        => User::where('roles', 'Admin')->orderBy('batch')->orderBy('student_number')->get()
+        ]);
+    }
+
     public function pendaftar()
     {
         return view('admin.pendaftar', [

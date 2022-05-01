@@ -21,6 +21,13 @@
     </li>
 
     <li class="menu-label mt-0">Database</li>
+    <li class="{{ Request::is('admin/data') ? 'mm-active' : '' }}">
+      <a href="/admin/data">
+        <div class="parent-icon"><i class="bi bi-person-check-fill"></i>
+        </div>
+        <div class="menu-title">Data Admin</div>
+      </a>
+    </li>
     <li class="{{ Request::is('admin/pendaftar') ? 'mm-active' : '' }}">
       <a href="/admin/pendaftar">
         <div class="parent-icon"><i class="bi bi-person-plus-fill"></i>

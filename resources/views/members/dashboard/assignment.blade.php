@@ -28,32 +28,18 @@
             @endif
     
             
-            @if ($form_open)
-              <div class="alert border-0 border-warning border-start border-4 bg-light-warning  fade show py-2">
-                <div class="d-flex align-items-center">
-                  <div class="fs-3 text-warning"><i class="bi bi-exclamation-triangle-fill"></i>
-                  </div>
-                  <div class="ms-3">
-                    <div class="text-warning">
-                      <strong>DEADLINE!</strong>
-                      Modul P1 - Dasar C++ : Minggu, 1 Mei 2022 Pukul 23.59 WTF
-                    </div>
+            <div class="alert border-0 border-warning border-start border-4 bg-light-warning  fade show py-2">
+              <div class="d-flex align-items-center">
+                <div class="fs-3 text-warning"><i class="bi bi-exclamation-triangle-fill"></i>
+                </div>
+                <div class="ms-3">
+                  <div class="text-warning">
+                    <strong>DEADLINE!</strong>
+                    Modul P1 - Dasar C++ : Minggu, 1 Mei 2022 Pukul 23.59 WTF
                   </div>
                 </div>
               </div>
-            @else 
-              <div class="alert border-0 border-warning border-start border-4 bg-light-warning  fade show py-2">
-                <div class="d-flex align-items-center">
-                  <div class="fs-3 text-warning"><i class="bi bi-exclamation-triangle-fill"></i>
-                  </div>
-                  <div class="ms-3">
-                    <div class="text-warning">
-                      <strong>SUBMISSION FORM HAS BEEN CLOSED!</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            @endif
+            </div>
 
             @if ($submission)
               <div>
@@ -94,9 +80,16 @@
                     <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->notes }}">
                   </div>
                 </div>
+                <div class="mb-1 row">
+                  <label for="file" class="col-sm-2 col-form-label">Terkumpul pada</label>
+                  <div class="col-sm-10">
+                    <p class="form-control-plaintext">
+                      {{ $submission->created_at }} <em>({{ $submitted }})</em>
+                    </p>
+                  </div>
+                </div>
               </div>
             @else
-              @if ($form_open)
               <div class="card-body px-0 pt-0">
                 <form action="/penugasan" method="post" enctype="multipart/form-data">
                   @csrf
@@ -188,7 +181,6 @@
                   </div>
                 </form>
               </div>
-              @endif
             @endif
 
           </div>
