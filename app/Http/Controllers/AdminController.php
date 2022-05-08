@@ -57,7 +57,7 @@ class AdminController extends Controller
     {
         return view('admin.kelompok', [
             'title'         => 'Data Kelompok',
-            'groups'        => Group::all(),
+            'groups'        => Group::where('group_number', '!=', NULL)->orderBy('group_number')->get(),
             'participants'  => Participant::all()
         ]);
     }

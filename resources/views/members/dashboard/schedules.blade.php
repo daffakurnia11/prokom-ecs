@@ -44,9 +44,9 @@
                   @foreach ($presences as $presence)
                     @if ($presence->schedule_id == $schedule->id)
                     @if ($presence->present_code == 'Permit')
-                    <button type="button" class="btn px-5 mt-3 btn-sm btn-outline-primary disabled">Telah Hadir</button>
-                    @else
                     <button type="button" class="btn px-5 mt-3 btn-sm btn-outline-warning disabled">Izin</button>
+                    @else
+                    <button type="button" class="btn px-5 mt-3 btn-sm btn-outline-primary disabled">Telah Hadir</button>
                     @endif
                     @php
                         $button = FALSE

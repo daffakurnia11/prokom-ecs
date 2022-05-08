@@ -22,7 +22,7 @@
                 <div class="ms-3">
                   <div class="text-info">
                     <strong>NEW FEATURES!</strong>
-                    Update Submission Uploading Form
+                    Update Admin's Participants Group and Progress. Check your group!
                   </div>
                 </div>
               </div>

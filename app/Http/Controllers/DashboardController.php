@@ -31,15 +31,17 @@ class DashboardController extends Controller
     }
     public function progress()
     {
-        $total = Schedule::count();
+        $total = Schedule::count() + 3;
         $attend = Presence::where('user_id', auth()->user()->id)->count();
-        $progress = ($attend / $total) * 100;
+        $submission = Submission::where('user_id', auth()->user()->id)->count();
+        $progress = round((($attend + $submission) / $total) * 100);
         return view(
             'members.dashboard.progress',
             [
                 'title'         => 'My Progress',
                 'schedules'     => Schedule::all(),
                 'presences'     => Presence::where('user_id', auth()->user()->id)->get(),
+                'submissions'   => Submission::where('user_id', auth()->user()->id)->get(),
                 'progress'      => $progress
             ]
         );
@@ -174,7 +176,7 @@ class DashboardController extends Controller
 
     public function assignment()
     {
-        $data = Submission::where('module', 'P1')->firstWhere('user_id', auth()->user()->id);
+        $data = Submission::where('module', 'P1')->firstWhere('user_id', auth()->user()->id) ?? NULL;
         $deadline = Carbon::create(2022, 5, 1, 23, 59 - 24, 0);
 
         return view(
@@ -182,7 +184,7 @@ class DashboardController extends Controller
             [
                 'title'         => 'Penugasan Pelatihan',
                 'submission'    => $data,
-                'submitted'     => $data->created_at->diffForHumans($deadline, ['parts' => 3])
+                'submitted'     => $data ? $data->created_at->diffForHumans($deadline, ['parts' => 3]) : NULL
             ]
         );
     }

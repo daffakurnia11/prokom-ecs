@@ -39,31 +39,31 @@ class DatabaseSeeder extends Seeder
         // $profile->whatsapp      = '';
         // $profile->save();
 
-        $user = new User;
-        $user->name             = 'Daffa Kurnia';
-        $user->email            = 'deltakilo1110@gmail.com';
-        $user->password         = Hash::make('123123123');
-        $user->verified         = TRUE;
-        $user->student_number   = '02311940000001';
-        $user->batch            = '2019';
-        $user->save();
+        // $user = new User;
+        // $user->name             = 'Daffa Kurnia';
+        // $user->email            = 'deltakilo1110@gmail.com';
+        // $user->password         = Hash::make('123123123');
+        // $user->verified         = TRUE;
+        // $user->student_number   = '02311940000001';
+        // $user->batch            = '2019';
+        // $user->save();
 
-        $getId = $user->id;
-        $profile = new Profile;
-        $profile->user_id       = $getId;
-        $profile->university    = 'Institut Teknologi Sepuluh Nopember';
-        $profile->major         = 'Teknik Fisika';
-        $profile->save();
+        // $getId = $user->id;
+        // $profile = new Profile;
+        // $profile->user_id       = $getId;
+        // $profile->university    = 'Institut Teknologi Sepuluh Nopember';
+        // $profile->major         = 'Teknik Fisika';
+        // $profile->save();
 
-        $participant = new Participant;
-        $participant->user_id       = $getId;
-        $participant->classes       = 'C';
-        $participant->krsm          = '02311940000001_KRSM.pdf';
-        $participant->payment       = '02311940000001_Payment.png';
-        $participant->screenshot    = '02311940000001_Screenshot.png';
-        $participant->group_number  = '1';
-        $participant->save();
+        // $participant = new Participant;
+        // $participant->user_id       = $getId;
+        // $participant->classes       = 'C';
+        // $participant->krsm          = '02311940000001_KRSM.pdf';
+        // $participant->payment       = '02311940000001_Payment.png';
+        // $participant->screenshot    = '02311940000001_Screenshot.png';
+        // $participant->group_number  = '1';
+        // $participant->save();
 
-        // Group::factory(14)->create();
+        Group::factory(22)->create();
     }
 }

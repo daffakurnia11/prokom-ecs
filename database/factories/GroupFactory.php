@@ -16,10 +16,18 @@ class GroupFactory extends Factory
      */
     public function definition()
     {
-        static $id = 1;
+        static $id = 0;
+        $group_array = [
+            '14', '15', '16', '24',
+            '25', '26', '39', '40',
+            '41', '42', '43', '44',
+            '45', '46', '47', '49',
+            '50', '51', '52', '53',
+            '80', '82'
+        ];
         return [
-            'user_id'   => $id,
-            'group_number'  => $id++
+            'user_id'   => $group_array[$id++],
+            'group_number'  => NULL
         ];
     }
 }
