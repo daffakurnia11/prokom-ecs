@@ -21,8 +21,8 @@
                 </div>
                 <div class="ms-3">
                   <div class="text-info">
-                    <strong>NEW FEATURES!</strong>
-                    Update Admin's Participants Group and Progress. Check your group!
+                    <strong>UPDATE FEATURES!</strong>
+                    Participants submission form in submission page.
                   </div>
                 </div>
               </div>

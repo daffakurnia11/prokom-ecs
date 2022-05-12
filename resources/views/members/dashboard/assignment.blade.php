@@ -35,7 +35,7 @@
                 <div class="ms-3">
                   <div class="text-warning">
                     <strong>DEADLINE!</strong>
-                    Modul P1 - Dasar C++ : Minggu, 1 Mei 2022 Pukul 23.59 WTF
+                    Modul P2 - GUI C++ : Senin, 16 Mei 2022 Pukul 23.59 WTF
                   </div>
                 </div>
               </div>
@@ -63,9 +63,9 @@
                   </div>
                 </div>
                 <div class="mb-1 row">
-                  <label for="module" class="col-sm-2 col-form-label">Kelompok</label>
+                  <label for="module" class="col-sm-2 col-form-label">Modul</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->module == 'P1' ? 'Modul P1 - Dasar C++' : '' }}">
+                    <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->module == 'P2' ? 'Modul P2 - GUI C++' : '' }}">
                   </div>
                 </div>
                 <div class="mb-1 row">
@@ -142,7 +142,7 @@
                         <label for="module" class="form-label">Materi*</label>
                         <div class="ms-auto position-relative">
                           <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                          <input type="text" readonly class="form-control @error('module') is-invalid @enderror radius-30 ps-5" id="module" name="module" placeholder="Masukkan nama lengkap" value="{{ old('module', "P1 - Dasar C++") }}">
+                          <input type="text" readonly class="form-control @error('module') is-invalid @enderror radius-30 ps-5" id="module" name="module" placeholder="Masukkan nama lengkap" value="{{ old('module', "P2 - GUI C++") }}">
                         </div>
                         @error('module')
                         <small class="text-danger">
