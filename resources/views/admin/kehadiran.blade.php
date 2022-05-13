@@ -6,7 +6,7 @@
   @endif
   <!--Header-->
   <div class="page-breadcrumb d-flex flex-column flex-md-row align-items-center mb-3">
-    <div class="breadcrumb-title pe-md-3">Data Kehadiran</div>
+    <div class="breadcrumb-title pe-md-3">Data Kehadiran {{ $module }}</div>
     <div class="ps-md-3 ms-md-auto mx-auto mx-md-0 mt-3 mt-md-0">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0 p-0">
@@ -18,7 +18,7 @@
   </div>
   <!--end of Header-->
 
-  <h6 class="mb-0 text-uppercase">Data Kehadiran Pelatihan Prokom 2022</h6>
+  <h6 class="mb-0 text-uppercase">Data Kehadiran {{ $module }} Pelatihan Prokom 2022</h6>
     <hr>
     <div class="card col-lg-9">
       <div class="card-body">

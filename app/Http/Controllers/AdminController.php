@@ -6,6 +6,8 @@ use App\Models\Announcement;
 use App\Models\Group;
 use App\Models\Participant;
 use App\Models\Presence;
+use App\Models\Schedule;
+use App\Models\Submission;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,9 +41,18 @@ class AdminController extends Controller
 
     public function show(User $user)
     {
+        $total = Schedule::count() + 3;
+        $attend = Presence::where('user_id', $user->id)->count();
+        $submission = Submission::where('user_id', $user->id)->count();
+        $progress = round((($attend + $submission) / $total) * 100);
+
         return view('admin.detail_pendaftar', [
-            'title'     => 'Data Pendaftar ' . $user->name,
-            'user'      => $user
+            'title'         => 'Data Pendaftar ' . $user->name,
+            'user'          => $user,
+            'schedules'     => Schedule::all(),
+            'presences'     => Presence::where('user_id', $user->id)->get(),
+            'progress'      => $progress,
+            'submissions'   => Submission::where('user_id', $user->id)->get()
         ]);
     }
 
@@ -59,6 +70,15 @@ class AdminController extends Controller
             'title'         => 'Data Kelompok',
             'groups'        => Group::where('group_number', '!=', NULL)->orderBy('group_number')->get(),
             'participants'  => Participant::all()
+        ]);
+    }
+
+    public function progress()
+    {
+        return view('admin.progress', [
+            'title'     => 'Rekap Progress',
+            'users'     => User::where('roles', 'Member')->get(),
+            'presences' => Presence::all(),
         ]);
     }
 }

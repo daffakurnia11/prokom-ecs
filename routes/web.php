@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SubmissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,7 +61,16 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/pendaftar/verifikasi/{user}', 'verifying');
     // Kelompok
     Route::get('/kelompok', 'groups');
+    // Progress
+    Route::get('/progress', 'progress');
   });
+  // Pengumuman
+  Route::resource('pengumuman', AnnouncementController::class)->parameter('pengumuman', 'announcement');
+  // Jadwal
+  Route::resource('jadwal', ScheduleController::class)->parameter('jadwal', 'schedule');
+  Route::get('/jadwal/{schedule}/regenerate', [ScheduleController::class, 'regenerate']);
+  // Modul
+  Route::resource('modul', ModuleController::class)->parameter('modul', 'module');
   // Kehadiran
   Route::controller(AttendanceController::class)->prefix('kehadiran')->group(function () {
     Route::get('/briefing', 'briefing');
@@ -70,12 +80,10 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/setAttend', 'setAttend');
     Route::get('/setPermission', 'setPermission');
   });
-  // Pengumuman
-  Route::resource('pengumuman', AnnouncementController::class)->parameter('pengumuman', 'announcement');
-  // Jadwal
-  Route::resource('jadwal', ScheduleController::class)->parameter('jadwal', 'schedule');
-  Route::get('/jadwal/{schedule}/regenerate', [ScheduleController::class, 'regenerate']);
-  // Modul
-  Route::resource('modul', ModuleController::class)->parameter('modul', 'module');
-  Route::get('/penugasan', [ModuleController::class, 'submission']);
+  // Penugasan
+  Route::controller(SubmissionController::class)->prefix('penugasan')->group(function () {
+    Route::get('/p1', 'p1');
+    Route::get('/p2', 'p2');
+    Route::get('/fp', 'fp');
+  });
 });

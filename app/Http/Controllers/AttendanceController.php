@@ -14,6 +14,7 @@ class AttendanceController extends Controller
         return view('admin.kehadiran', [
             'title'     => 'Data Kehadiran Briefing',
             'schedule'  => '1',
+            'module'    => 'Briefing',
             'users'     => User::where('roles', 'Member')->get()
         ]);
     }
@@ -22,6 +23,7 @@ class AttendanceController extends Controller
         return view('admin.kehadiran', [
             'title'     => 'Data Kehadiran Pelatihan P1',
             'schedule'  => '2',
+            'module'    => 'P1',
             'users'     => User::where('roles', 'Member')->get()
         ]);
     }
@@ -30,6 +32,7 @@ class AttendanceController extends Controller
         return view('admin.kehadiran', [
             'title'     => 'Data Kehadiran Pelatihan P2',
             'schedule'  => '3',
+            'module'    => 'P2',
             'users'     => User::where('roles', 'Member')->get()
         ]);
     }
@@ -38,6 +41,7 @@ class AttendanceController extends Controller
         return view('admin.kehadiran', [
             'title'     => 'Data Kehadiran Pelatihan P3',
             'schedule'  => '4',
+            'module'    => 'P3',
             'users'     => User::where('roles', 'Member')->get()
         ]);
     }

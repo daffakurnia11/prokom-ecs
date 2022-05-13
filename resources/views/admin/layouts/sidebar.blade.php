@@ -20,7 +20,7 @@
       </a>
     </li>
 
-    <li class="menu-label mt-0">Database</li>
+    <li class="menu-label mt-0">Admin</li>
     <li class="{{ Request::is('admin/data') ? 'mm-active' : '' }}">
       <a href="/admin/data">
         <div class="parent-icon"><i class="bi bi-person-check-fill"></i>
@@ -28,6 +28,8 @@
         <div class="menu-title">Data Admin</div>
       </a>
     </li>
+    
+    <li class="menu-label mt-0">Peserta</li>
     <li class="{{ Request::is('admin/pendaftar') ? 'mm-active' : '' }}">
       <a href="/admin/pendaftar">
         <div class="parent-icon"><i class="bi bi-person-plus-fill"></i>
@@ -40,6 +42,38 @@
         <div class="parent-icon"><i class="bi bi-people-fill"></i>
         </div>
         <div class="menu-title">Kelompok</div>
+      </a>
+    </li>
+
+    <li class="menu-label mt-0">Pengaturan Dashboard</li>
+    <li class="{{ Request::is('admin/pengumuman') ? 'mm-active' : '' }}">
+      <a href="/admin/pengumuman">
+        <div class="parent-icon"><i class="bi bi-megaphone"></i>
+        </div>
+        <div class="menu-title">Pengumuman</div>
+      </a>
+    </li>
+    <li class="{{ Request::is('admin/modul') ? 'mm-active' : '' }}">
+      <a href="/admin/modul">
+        <div class="parent-icon"><i class="bi bi-journal-text"></i>
+        </div>
+        <div class="menu-title">Modul</div>
+      </a>
+    </li>
+    <li class="{{ Request::is('admin/jadwal') ? 'mm-active' : '' }}">
+      <a href="/admin/jadwal">
+        <div class="parent-icon"><i class="bi bi-calendar-week"></i>
+        </div>
+        <div class="menu-title">Jadwal</div>
+      </a>
+    </li>
+    
+    <li class="menu-label mt-0">Progress Pelatihan</li>
+    <li class="{{ Request::is('admin/progress') ? 'mm-active' : '' }}">
+      <a href="/admin/progress">
+        <div class="parent-icon"><i class="bi bi-bar-chart-line"></i>
+        </div>
+        <div class="menu-title">Rekap Progress</div>
       </a>
     </li>
     <li class="{{ Request::is('admin/kehadiran**') ? 'mm-active' : '' }}">
@@ -63,35 +97,23 @@
         </li>
       </ul>
     </li>
-
-    <li class="menu-label mt-0">Pengaturan Dashboard</li>
-    <li class="{{ Request::is('admin/pengumuman') ? 'mm-active' : '' }}">
-      <a href="/admin/pengumuman">
-        <div class="parent-icon"><i class="bi bi-megaphone"></i>
-        </div>
-        <div class="menu-title">Pengumuman</div>
-      </a>
-    </li>
-    <li class="{{ Request::is('admin/modul') ? 'mm-active' : '' }}">
-      <a href="/admin/modul">
-        <div class="parent-icon"><i class="bi bi-journal-text"></i>
-        </div>
-        <div class="menu-title">Modul</div>
-      </a>
-    </li>
-    <li class="{{ Request::is('admin/penugasan') ? 'mm-active' : '' }}">
-      <a href="/admin/penugasan">
+    <li class="{{ Request::is('admin/penugasan**') ? 'mm-active' : '' }}">
+      <a href="#" class="has-arrow">
         <div class="parent-icon"><i class="bi bi-journal-check"></i>
         </div>
         <div class="menu-title">Penugasan</div>
       </a>
-    </li>
-    <li class="{{ Request::is('admin/jadwal') ? 'mm-active' : '' }}">
-      <a href="/admin/jadwal">
-        <div class="parent-icon"><i class="bi bi-calendar-week"></i>
-        </div>
-        <div class="menu-title">Jadwal</div>
-      </a>
+      <ul class="mm-collapse {{ Request::is('admin/penugasan**') ? 'mm-show' : '' }}">
+        <li class="{{ Request::is('admin/penugasan/p1') ? 'mm-active' : '' }}"> 
+          <a href="/admin/penugasan/p1"><i class="bi bi-arrow-right-short"></i>P1 Dasar C++</a>
+        </li>
+        <li class="{{ Request::is('admin/penugasan/p2') ? 'mm-active' : '' }}"> 
+          <a href="/admin/penugasan/p2"><i class="bi bi-arrow-right-short"></i>P2 GUI</a>
+        </li>
+        <li class="{{ Request::is('admin/penugasan/fp') ? 'mm-active' : '' }}"> 
+          <a href="/admin/penugasan/fp"><i class="bi bi-arrow-right-short"></i>Final Project</a>
+        </li>
+      </ul>
     </li>
     
     {{-- Database Menu --}}

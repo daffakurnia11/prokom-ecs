@@ -122,6 +122,24 @@
               </div>
             </div>
           </div>
+
+          {{-- Data Penugasan --}}
+          <div class="card shadow-none border mb-3">
+            <div class="card-header">
+              <h6 class="mb-0">Data Penugasan</h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                @foreach ($submissions as $submission)
+                    
+                <div class="col-sm-6 col-xxl-4 mb-3">
+                  <label class="form-label fw-bold">{{ $submission->module }}</label>
+                  <a href="/files/submission/{{ $submission->file }}" class="d-block">{{ $submission->file }}</a>
+                </div>
+                @endforeach
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -129,7 +147,7 @@
       <div class="card shadow-sm border-0 overflow-hidden">
         <div class="card-body">
             <div class="profile-avatar text-center">
-              <img src="/img/profile.svg" class="rounded-circle shadow" width="120" height="120" alt="">
+              <img src="/img/{{ isset($user->profile->profile_pict) ? 'photo_profile/' . $user->profile->profile_pict : 'profile.svg' }}" width="120" height="120" class="img-thumbnail rounded-circle d-block mx-auto">
             </div>
             <div class="text-center mt-4">
               <h4 class="mb-1">{{ $user->name }}</h4>
@@ -137,6 +155,12 @@
               <div class="mt-4"></div>
               <h6 class="mb-1">{{ $user->profile->major }} {{ $user->batch }}</h6>
               <p class="mb-0 text-secondary">{{ $user->profile->university }}</p>
+              <h6 class="mb-1 mt-3">Progress Peserta</h6>
+              <div class="mb-0 text-secondary">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: {{ $progress }}%;" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100">{{ $progress }}%</div>
+                </div>
+              </div>
             </div>
             {{-- <hr>
             <div class="text-start">
@@ -157,6 +181,35 @@
             Terdaftar
             <span class="badge bg-primary rounded-pill">{{ $user->created_at->diffForHumans() }}</span>
           </li>
+          @foreach ($schedules as $schedule)
+            @php
+              $attend = TRUE
+            @endphp
+            @foreach ($presences as $presence)
+              @if ($presence->schedule_id == $schedule->id)
+                @if ($presence->present_code == 'Permit')
+                  <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                    {{ $schedule->activity }}
+                    <span class="badge bg-warning rounded-pill">Izin</span>
+                  </li>
+                @else
+                  <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                    {{ $schedule->activity }}
+                    <span class="badge bg-success rounded-pill">Hadir</span>
+                  </li>
+                @endif
+                @php
+                    $attend = FALSE
+                @endphp
+              @endif
+            @endforeach
+            @if ($attend)
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+              {{ $schedule->activity }}
+              <span class="badge bg-danger rounded-pill">Tidak Hadir</span>
+            </li>
+            @endif
+          @endforeach
         </ul>
       </div>
     </div>
