@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         $participant->krsm          = '02311940000001_KRSM.pdf';
         $participant->payment       = '02311940000001_Payment.png';
         $participant->screenshot    = '02311940000001_Screenshot.png';
-        $participant->group_number  = '1';
+        $participant->group_number  = '3';
         $participant->save();
 
         // Group::factory(22)->create();

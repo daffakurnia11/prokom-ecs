@@ -33,6 +33,8 @@
                 <th>P1</th>
                 <th>P2</th>
                 <th>P3</th>
+                <th>Presbar 1</th>
+                <th>Presbar 2</th>
               </tr>
             </thead>
             <tbody>
@@ -129,6 +131,50 @@
                       <span class="text-danger">Tidak Hadir</span>
                     @endif
                   </td>
+                  <td class="text-center">
+                    @php
+                      $absent = TRUE
+                    @endphp
+                    @foreach ($presences as $presence)
+                      @if ($user->id == $presence->user_id)
+                        @if ($presence->schedule_id == 5)
+                          @if ($presence->present_code == "Permit")
+                            <span class="text-primary">Izin</span>
+                          @else
+                            <span class="text-success">Hadir</span>
+                          @endif
+                          @php
+                            $absent = FALSE
+                          @endphp
+                        @endif
+                      @endif
+                    @endforeach
+                    @if ($absent)
+                      <span class="text-danger">Tidak Hadir</span>
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    @php
+                      $absent = TRUE
+                    @endphp
+                    @foreach ($presences as $presence)
+                      @if ($user->id == $presence->user_id)
+                        @if ($presence->schedule_id == 6)
+                          @if ($presence->present_code == "Permit")
+                            <span class="text-primary">Izin</span>
+                          @else
+                            <span class="text-success">Hadir</span>
+                          @endif
+                          @php
+                            $absent = FALSE
+                          @endphp
+                        @endif
+                      @endif
+                    @endforeach
+                    @if ($absent)
+                      <span class="text-danger">Tidak Hadir</span>
+                    @endif
+                  </td>
                 </tr>
               @endforeach
             </tbody>
@@ -141,6 +187,8 @@
                 <th>P1</th>
                 <th>P2</th>
                 <th>P3</th>
+                <th>Presbar 1</th>
+                <th>Presbar 2</th>
               </tr>
             </tfoot>
           </table>

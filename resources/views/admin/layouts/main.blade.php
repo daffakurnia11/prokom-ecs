@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <!-- Plugins -->
+  <link href="/vendor/simplebar/css/simplebar.css" rel="stylesheet" />
   <link href="/vendor/metismenu/css/metisMenu.min.css" rel="stylesheet" />
   {{-- Date Time Picker --}}
 	<link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
@@ -63,12 +64,10 @@
   <!-- Bootstrap bundle JS -->
   <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
+  <script src="/vendor/jquery/dist/jquery.js"></script>
+  <script src="/vendor/simplebar/js/simplebar.min.js"></script>
   <script src="/vendor/metismenu/js/metisMenu.min.js"></script>
   <script src="/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
-  {{-- Chartjs --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script> --}}
-  {{-- Apex Charts --}}
-  {{-- <script src="/vendor/apexcharts-bundle/js/apexcharts.min.js"></script> --}}
   {{-- Data Tables --}}
   <script src="/vendor/datatable/js/jquery.dataTables.min.js"></script>
   <script src="/vendor/datatable/js/dataTables.bootstrap5.min.js"></script>

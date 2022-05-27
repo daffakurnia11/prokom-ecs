@@ -176,8 +176,8 @@ class DashboardController extends Controller
 
     public function assignment()
     {
-        $data = Submission::where('module', 'P2')->firstWhere('user_id', auth()->user()->id) ?? NULL;
-        $deadline = Carbon::create(2022, 5, 16, 23, 59 - 24, 0);
+        $data = Submission::where('module', 'FP')->firstWhere('user_id', auth()->user()->id) ?? NULL;
+        $deadline = Carbon::create(2022, 5, 28, 9, 36, 0);
 
         return view(
             'members.dashboard.assignment',
@@ -198,9 +198,9 @@ class DashboardController extends Controller
 
         $validated['user_id'] = auth()->user()->id;
         $validated['group_number'] = auth()->user()->participant->group_number;
-        $validated['module'] = 'P2';
+        $validated['module'] = 'FP';
 
-        $filename = auth()->user()->student_number . '_P2_Submission.' . $validated['file']->extension();
+        $filename = auth()->user()->student_number . '_FP_Submission.' . $validated['file']->extension();
         $validated['file'] = $filename;
         $request->file->move(public_path('files/submission'), $filename);
 

@@ -77,6 +77,8 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/p1', 'p1');
     Route::get('/p2', 'p2');
     Route::get('/p3', 'p3');
+    Route::get('/presbar1', 'presbar1');
+    Route::get('/presbar2', 'presbar2');
     Route::get('/setAttend', 'setAttend');
     Route::get('/setPermission', 'setPermission');
   });

@@ -95,6 +95,12 @@
         <li class="{{ Request::is('admin/kehadiran/p3') ? 'mm-active' : '' }}"> 
           <a href="/admin/kehadiran/p3"><i class="bi bi-arrow-right-short"></i>P3 Database</a>
         </li>
+        <li class="{{ Request::is('admin/kehadiran/presbar1') ? 'mm-active' : '' }}"> 
+          <a href="/admin/kehadiran/presbar1"><i class="bi bi-arrow-right-short"></i>Presbar 1</a>
+        </li>
+        <li class="{{ Request::is('admin/kehadiran/presbar2') ? 'mm-active' : '' }}"> 
+          <a href="/admin/kehadiran/presbar2"><i class="bi bi-arrow-right-short"></i>Presbar 2</a>
+        </li>
       </ul>
     </li>
     <li class="{{ Request::is('admin/penugasan**') ? 'mm-active' : '' }}">

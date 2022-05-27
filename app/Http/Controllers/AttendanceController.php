@@ -45,6 +45,24 @@ class AttendanceController extends Controller
             'users'     => User::where('roles', 'Member')->get()
         ]);
     }
+    public function presbar1()
+    {
+        return view('admin.kehadiran', [
+            'title'     => 'Data Kehadiran Presentasi FP Sesi 1',
+            'schedule'  => '5',
+            'module'    => 'FP1',
+            'users'     => User::where('roles', 'Member')->get()
+        ]);
+    }
+    public function presbar2()
+    {
+        return view('admin.kehadiran', [
+            'title'     => 'Data Kehadiran Presentasi FP Sesi 2',
+            'schedule'  => '6',
+            'module'    => 'FP2',
+            'users'     => User::where('roles', 'Member')->get()
+        ]);
+    }
     public function setAttend(Request $request)
     {
         $schedule = Schedule::firstWhere('id', $request->schedule);

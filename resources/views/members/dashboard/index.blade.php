@@ -22,7 +22,7 @@
                 <div class="ms-3">
                   <div class="text-info">
                     <strong>UPDATE FEATURES!</strong>
-                    Participants submission form in submission page.
+                    Submission Form and Progress Calculation.
                   </div>
                 </div>
               </div>
