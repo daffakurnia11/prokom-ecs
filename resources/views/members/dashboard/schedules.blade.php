@@ -23,6 +23,36 @@
               <p class="text-center">Belum ada jadwal</p>
 
             @else
+
+            <div class="card">
+              <h2 class="card-title" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Jadwal Presentasi Final Project
+                </button>
+              </h2>
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                <div class="accordion-body">
+                  <div class="row">
+                    @foreach ($presentations as $presentation)
+                    <div class="col-xl-6 col-lg-12 col-sm-6">
+                      <div class="list-group-item my-2">
+                        <strong class="d-block">Kelompok {{ $presentation->group_number }}</strong>
+                        <p class="card-text mb-1">
+                          <i class="bi bi-calendar3"></i> <strong>Hari, tanggal</strong> : {{ 
+                          \Carbon\Carbon::createFromFormat('Y-m-d', $presentation->date)->format('l') . ' - ' . \Carbon\Carbon::createFromFormat('Y-m-d', $presentation->date)->format('M d, Y') 
+                        }}
+                        </p>
+                        <p class="card-text mb-1">
+                          <i class="bi bi-alarm"></i> <strong>Waktu</strong> : {{ $presentation->time_start }} - {{ $presentation->time_ended }}
+                        </p>
+                      </div>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
+
               @foreach ($schedules as $schedule)
               @php
                   $button = TRUE

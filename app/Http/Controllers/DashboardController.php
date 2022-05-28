@@ -7,6 +7,7 @@ use App\Models\Group;
 use App\Models\Module;
 use App\Models\Participant;
 use App\Models\Presence;
+use App\Models\Presentation;
 use App\Models\Profile;
 use App\Models\Schedule;
 use App\Models\Submission;
@@ -129,7 +130,8 @@ class DashboardController extends Controller
             [
                 'title'         => 'Jadwal Pelatihan',
                 'schedules'     => Schedule::all(),
-                'presences'     => Presence::where('user_id', auth()->user()->id)->get()
+                'presences'     => Presence::where('user_id', auth()->user()->id)->get(),
+                'presentations' => Presentation::all()
             ]
         );
     }
@@ -169,7 +171,8 @@ class DashboardController extends Controller
                 'title'         => 'Kelompok Pelatihan',
                 'number'        => $selector,
                 'participants'  => Participant::where('group_number', $selector)->get(),
-                'group'         => Group::firstWhere('group_number', $selector)
+                'group'         => Group::firstWhere('group_number', $selector),
+                'presentation'  => Presentation::firstWhere('group_number', $selector)
             ]
         );
     }

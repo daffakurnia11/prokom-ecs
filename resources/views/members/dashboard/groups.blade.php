@@ -39,6 +39,21 @@
                 </div>
               </div>
             </div>
+            
+            <h6 class="fw-normal mt-3">Jadwal Presentasi Final Project</h6>
+            <div class="card mb-3">
+              <div class="card-body">
+                <p class="card-text mb-1">
+                  <i class="bi bi-calendar3"></i> <strong>Hari, tanggal</strong> : {{ 
+                    \Carbon\Carbon::createFromFormat('Y-m-d', $presentation->date)->format('l') . ' - ' . \Carbon\Carbon::createFromFormat('Y-m-d', $presentation->date)->format('M d, Y') 
+                    }}
+                </p>
+                <p class="card-text mb-1">
+                  <i class="bi bi-alarm"></i> <strong>Waktu</strong> : {{ $presentation->time_start }} - {{ $presentation->time_ended }}
+                </p>
+              </div>
+            </div>
+            
             <h6 class="fw-normal">Anggota Kelompok </h6>
             <ul class="list-group">
               @foreach ($participants as $participant)
@@ -48,6 +63,7 @@
               </li>
               @endforeach
             </ul>
+
             @else
             <h5 class="text-center">Tidak ada kelompok</h5>
             @endif
