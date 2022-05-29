@@ -40,6 +40,7 @@
                 <th>Penugasan P2</th>
                 <th>Final Project</th>
                 <th>Decision</th>
+                <th>Total Progress</th>
               </tr>
             </thead>
             <tbody>
@@ -248,13 +249,14 @@
                       $decision = ($contribution / 9) * 100
                     @endphp
                     @if ($decision > 75)
-                      <span class="text-success">Lulus ({{ intval($decision) }}%)</span>
+                      <span class="text-success">Lulus</span>
                     @elseif ($decision >= 55 && $decision < 75)
-                      <span class="text-warning">Dipertimbangkan ({{ intval($decision) }}%)</span>
+                      <span class="text-warning">Dipertimbangkan</span>
                     @else
-                      <span class="text-danger">Tidak Lulus ({{ intval($decision) }}%)</span>
+                      <span class="text-danger">Tidak Lulus</span>
                     @endif
                   </td>
+                  <td class="text-center">{{ intval($decision) }}%</td>
                 </tr>
               @endforeach
             </tbody>
@@ -274,6 +276,7 @@
                 <th>Penugasan P2</th>
                 <th>Final Project</th>
                 <th>Decision</th>
+                <th>Total Progress</th>
               </tr>
             </tfoot>
           </table>
