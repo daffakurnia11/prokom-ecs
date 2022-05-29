@@ -27,6 +27,7 @@
             <thead>
               <tr>
                 <th>No.</th>
+                <th>user_id</th>
                 <th>Nama Pendaftar</th>
                 <th>NRP</th>
                 <th>Briefing</th>
@@ -35,12 +36,22 @@
                 <th>P3</th>
                 <th>Presbar 1</th>
                 <th>Presbar 2</th>
+                <th>Penugasan P1</th>
+                <th>Penugasan P2</th>
+                <th>Final Project</th>
+                <th>Decision</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($users as $user)
+                @php
+                  $contribution = 0
+                @endphp
                 <tr>
                   <td class="text-center">{{ $loop->iteration }}</td>
+                  <td class="text-center">
+                    <a href="/admin/pendaftar/{{ $user->student_number }}">{{ $user->id }}</a>
+                  </td>
                   <td class="text-nowrap">{{ $user->name }}</td>
                   <td class="text-center text-nowrap">{{ $user->student_number }}</td>
                   <td class="text-center">
@@ -56,7 +67,8 @@
                             <span class="text-success">Hadir</span>
                           @endif
                           @php
-                            $absent = FALSE
+                            $absent = FALSE;
+                            $contribution++
                           @endphp
                         @endif
                       @endif
@@ -78,7 +90,8 @@
                             <span class="text-success">Hadir</span>
                           @endif
                           @php
-                            $absent = FALSE
+                            $absent = FALSE;
+                            $contribution++
                           @endphp
                         @endif
                       @endif
@@ -100,7 +113,8 @@
                             <span class="text-success">Hadir</span>
                           @endif
                           @php
-                            $absent = FALSE
+                            $absent = FALSE;
+                            $contribution++
                           @endphp
                         @endif
                       @endif
@@ -122,7 +136,8 @@
                             <span class="text-success">Hadir</span>
                           @endif
                           @php
-                            $absent = FALSE
+                            $absent = FALSE;
+                            $contribution++
                           @endphp
                         @endif
                       @endif
@@ -144,7 +159,8 @@
                             <span class="text-success">Hadir</span>
                           @endif
                           @php
-                            $absent = FALSE
+                            $absent = FALSE;
+                            $contribution++
                           @endphp
                         @endif
                       @endif
@@ -166,7 +182,8 @@
                             <span class="text-success">Hadir</span>
                           @endif
                           @php
-                            $absent = FALSE
+                            $absent = FALSE;
+                            $contribution++
                           @endphp
                         @endif
                       @endif
@@ -175,12 +192,76 @@
                       <span class="text-danger">Tidak Hadir</span>
                     @endif
                   </td>
+                  <td class="text-center">
+                    @php
+                      $submitted = FALSE
+                    @endphp
+                    @foreach ($submissions as $submission)
+                      @if ($user->id == $submission->user_id && $submission->module === "P1")
+                        <a href="/files/submission/{{ $submission->file }}" class="text-success">Submitted</a>
+                        @php
+                          $submitted = TRUE;
+                          $contribution++
+                        @endphp
+                      @endif
+                    @endforeach
+                    @if (!$submitted)
+                      <span class="text-danger">Tidak ada</span>
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    @php
+                      $submitted = FALSE
+                    @endphp
+                    @foreach ($submissions as $submission)
+                      @if ($user->id == $submission->user_id && $submission->module === "P2")
+                        <a href="/files/submission/{{ $submission->file }}" class="text-success">Submitted</a>
+                        @php
+                          $submitted = TRUE;
+                          $contribution++
+                        @endphp
+                      @endif
+                    @endforeach
+                    @if (!$submitted)
+                      <span class="text-danger">Tidak ada</span>
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    @php
+                      $submitted = FALSE
+                    @endphp
+                    @foreach ($submissions as $submission)
+                      @if ($user->id == $submission->user_id && $submission->module === "FP")
+                        <a href="/files/submission/{{ $submission->file }}" class="text-success">Submitted</a>
+                        @php
+                          $submitted = TRUE;
+                          $contribution++
+                        @endphp
+                      @endif
+                    @endforeach
+                    @if (!$submitted)
+                      <span class="text-danger">Tidak ada</span>
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    @php
+                      $decision = ($contribution / 9) * 100
+                    @endphp
+                    @if ($decision > 75)
+                      <span class="text-success">Lulus ({{ intval($decision) }}%)</span>
+                    @elseif ($decision >= 55 && $decision < 75)
+                      <span class="text-warning">Dipertimbangkan ({{ intval($decision) }}%)</span>
+                    @else
+                      <span class="text-danger">Tidak Lulus ({{ intval($decision) }}%)</span>
+                    @endif
+                  </td>
                 </tr>
               @endforeach
             </tbody>
             <tfoot>
               <tr>
                 <th>No.</th>
+                <th>user_id</th>
                 <th>Nama Pendaftar</th>
                 <th>NRP</th>
                 <th>Briefing</th>
@@ -189,6 +270,10 @@
                 <th>P3</th>
                 <th>Presbar 1</th>
                 <th>Presbar 2</th>
+                <th>Penugasan P1</th>
+                <th>Penugasan P2</th>
+                <th>Final Project</th>
+                <th>Decision</th>
               </tr>
             </tfoot>
           </table>

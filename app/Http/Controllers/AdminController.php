@@ -76,9 +76,10 @@ class AdminController extends Controller
     public function progress()
     {
         return view('admin.progress', [
-            'title'     => 'Rekap Progress',
-            'users'     => User::where('roles', 'Member')->get(),
-            'presences' => Presence::all(),
+            'title'         => 'Rekap Progress',
+            'users'         => User::where('roles', 'Member')->orderBy('student_number')->get(),
+            'presences'     => Presence::all(),
+            'submissions'   => Submission::all(),
         ]);
     }
 }
