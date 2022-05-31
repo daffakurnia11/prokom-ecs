@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Certificate;
 use App\Models\Group;
 use App\Models\Participant;
 use App\Models\Profile;
@@ -63,6 +64,12 @@ class DatabaseSeeder extends Seeder
         $participant->screenshot    = '02311940000001_Screenshot.png';
         $participant->group_number  = '3';
         $participant->save();
+
+        $certificate = new Certificate;
+        $certificate->user_id       = $getId;
+        $certificate->status        = "Lulus";
+        $certificate->progress      = "100";
+        $certificate->save();
 
         // Group::factory(22)->create();
     }

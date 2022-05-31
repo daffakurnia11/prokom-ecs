@@ -9,6 +9,17 @@
     <p class="fs-6 text-center my-0">{{ auth()->user()->student_number }}</p>
     @endif
     <a href="/profil" class="fs-6 d-block text-center mt-0">Edit profil</a>
+    
+    @if (auth()->user()->roles == 'Member')
+    <h2 class="fs-5 mt-3 mb-0 text-center">Status</h2>
+      @if (auth()->user()->certificate->status == "Lulus")
+      <p class="fs-6 fw-bold text-success text-center my-0">{{ auth()->user()->certificate->status }} ({{ auth()->user()->certificate->progress }}%)</p>
+      @elseif (auth()->user()->certificate->status == "Dipertimbangkan")
+      <p class="fs-6 fw-bold text-warning text-center my-0">{{ auth()->user()->certificate->status }} ({{ auth()->user()->certificate->progress }}%)</p>
+      @else
+      <p class="fs-6 fw-bold text-danger text-center my-0">{{ auth()->user()->certificate->status }} ({{ auth()->user()->certificate->progress }}%)</p>
+      @endif
+    @endif
 
     @if (auth()->user()->roles == 'Admin')
     <div class="mt-3">

@@ -153,14 +153,27 @@
               <h4 class="mb-1">{{ $user->name }}</h4>
               <p class="mb-0 text-secondary">{{ $user->student_number }}</p>
               <div class="mt-4"></div>
+              
               <h6 class="mb-1">{{ $user->profile->major }} {{ $user->batch }}</h6>
               <p class="mb-0 text-secondary">{{ $user->profile->university }}</p>
+              
               <h6 class="mb-1 mt-3">Progress Peserta</h6>
               <div class="mb-0 text-secondary">
                 <div class="progress">
                   <div class="progress-bar" role="progressbar" style="width: {{ $progress }}%;" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100">{{ $progress }}%</div>
                 </div>
               </div>
+              
+              <h6 class="mb-1 mt-3">Status Kelulusan</h6>
+              <p class="mb-0 text-secondary">
+                @if ($user->certificate->status == 'Lulus')
+                  <span class="fw-bold text-success">{{ $user->certificate->status }} ({{ $user->certificate->progress }}%)</span>
+                @elseif ($user->certificate->status == 'Dipertimbangkan')
+                  <span class="fw-bold text-warning">{{ $user->certificate->status }} ({{ $user->certificate->progress }}%)</span>
+                @else
+                  <span class="fw-bold text-danger">{{ $user->certificate->status }} ({{ $user->certificate->progress }}%)</span>
+                @endif
+              </p>
             </div>
             {{-- <hr>
             <div class="text-start">
@@ -181,6 +194,10 @@
             Terdaftar
             <span class="badge bg-primary rounded-pill">{{ $user->created_at->diffForHumans() }}</span>
           </li>
+        </ul>
+
+        <h6 class="mb-1 mt-3 text-center">Rekap Kehadiran</h6>
+        <ul class="list-group list-group-flush">
           @foreach ($schedules as $schedule)
             @php
               $attend = TRUE
