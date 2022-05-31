@@ -210,4 +210,9 @@ class DashboardController extends Controller
         Submission::create($validated);
         return back()->with('message', 'Submitted');
     }
+
+    public function certificate()
+    {
+        return view('members.dashboard.certificate');
+    }
 }

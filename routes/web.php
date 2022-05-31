@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     // Penugasan
     Route::get('/penugasan', 'assignment');
     Route::post('/penugasan', 'submission');
+    // Download Sertifikat
+    Route::get('/certificate', 'certificate');
   });
 });
 
