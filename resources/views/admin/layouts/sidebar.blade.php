@@ -119,6 +119,9 @@
         <li class="{{ Request::is('admin/penugasan/fp') ? 'mm-active' : '' }}"> 
           <a href="/admin/penugasan/fp"><i class="bi bi-arrow-right-short"></i>Final Project</a>
         </li>
+        <li class="{{ Request::is('admin/penugasan/fp-rev') ? 'mm-active' : '' }}"> 
+          <a href="/admin/penugasan/fp-rev"><i class="bi bi-arrow-right-short"></i>Revisi Final Project</a>
+        </li>
       </ul>
     </li>
     

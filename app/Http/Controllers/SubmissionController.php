@@ -31,4 +31,12 @@ class SubmissionController extends Controller
             'submission'    => Submission::where('module', 'FP')->get()
         ]);
     }
+    public function fp_rev()
+    {
+        return view('admin.modul.submission-rev', [
+            'title'         => 'Daftar Revisi Final Project',
+            'module'        => 'Revisi Final Project',
+            'submission'    => Submission::where('module', 'FP-rev')->get()
+        ]);
+    }
 }

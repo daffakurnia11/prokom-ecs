@@ -10,7 +10,7 @@ class Submission extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'group_number', 'module', 'file', 'notes'
+        'user_id', 'group_number', 'module', 'file', 'notes', 'video'
     ];
 
     public function user()

@@ -14,7 +14,7 @@
     <h2 class="fs-5 mt-3 mb-0 text-center">Status</h2>
       @if (auth()->user()->certificate->status == "Lulus")
       <p class="fs-6 fw-bold text-success text-center my-0">{{ auth()->user()->certificate->status }} ({{ auth()->user()->certificate->progress }}%)</p>
-      <a href="/certificate" target="_blank" class="d-block text-center">Download Sertifikat</a>
+      {{-- <a href="/certificate" target="_blank" class="d-block text-center">Download Sertifikat</a> --}}
       @elseif (auth()->user()->certificate->status == "Dipertimbangkan")
       <p class="fs-6 fw-bold text-warning text-center my-0">{{ auth()->user()->certificate->status }} ({{ auth()->user()->certificate->progress }}%)</p>
       @else

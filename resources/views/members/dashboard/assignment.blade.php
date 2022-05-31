@@ -35,7 +35,7 @@
                 <div class="ms-3">
                   <div class="text-warning">
                     <strong>DEADLINE!</strong>
-                    Final Project : Sabtu, 28 Mei 2022 Pukul 10.00 WTF
+                    Final Project : Minggu, 12 Juni 2022 Pukul 23.59 WTF
                   </div>
                 </div>
               </div>
@@ -65,13 +65,19 @@
                 <div class="mb-1 row">
                   <label for="module" class="col-sm-2 col-form-label">Modul</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->module == 'FP' ? 'Final Project' : '' }}">
+                    <input type="text" readonly class="form-control-plaintext" id="module" value="{{ $submission->module == 'FP-rev' ? 'Revisi Final Project' : '' }}">
                   </div>
                 </div>
                 <div class="mb-1 row">
                   <label for="file" class="col-sm-2 col-form-label">Berkas</label>
                   <div class="col-sm-10">
                     <a href="files/submission/{{ $submission->file }}" class="py-2 d-block">{{ $submission->file }}</a>
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <label for="file" class="col-sm-2 col-form-label">Link Video</label>
+                  <div class="col-sm-10">
+                    <a href="{{ $submission->video }}" class="py-2 d-block">{{ $submission->video }}</a>
                   </div>
                 </div>
                 <div class="mb-1 row">
@@ -142,7 +148,7 @@
                         <label for="module" class="form-label">Materi*</label>
                         <div class="ms-auto position-relative">
                           <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-person-circle"></i></div>
-                          <input type="text" readonly class="form-control @error('module') is-invalid @enderror radius-30 ps-5" id="module" name="module" placeholder="Masukkan nama lengkap" value="{{ old('module', "Final Project") }}">
+                          <input type="text" readonly class="form-control @error('module') is-invalid @enderror radius-30 ps-5" id="module" name="module" placeholder="Masukkan nama lengkap" value="{{ old('module', "Revisi Final Project") }}">
                         </div>
                         @error('module')
                         <small class="text-danger">
@@ -157,6 +163,19 @@
                         <label for="file" class="form-label">File Penugasan (format .zip)*</label>
                         <input type="file" class="form-control @error('file') is-invalid @enderror radius-30" id="file" name="file" value="{{ old('file') }}">
                         @error('file')
+                        <small class="text-danger">
+                          {{ $message }}
+                        </small>
+                        @enderror
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="mb-3">
+                        <label for="file" class="form-label">Link Video Youtube*</label>
+                        <div class="ms-auto position-relative">
+                          <input type="text" class="form-control @error('video') is-invalid @enderror ps-4 radius-30" id="video" name="video" placeholder="Masukkan link video youtube" value="{{ old('video') }}">
+                        </div>
+                        @error('video')
                         <small class="text-danger">
                           {{ $message }}
                         </small>

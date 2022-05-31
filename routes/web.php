@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/penugasan', 'assignment');
     Route::post('/penugasan', 'submission');
     // Download Sertifikat
-    Route::get('/certificate', 'certificate');
+    // Route::get('/certificate', 'certificate');
   });
 });
 
@@ -89,5 +89,6 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/p1', 'p1');
     Route::get('/p2', 'p2');
     Route::get('/fp', 'fp');
+    Route::get('/fp-rev', 'fp_rev');
   });
 });
