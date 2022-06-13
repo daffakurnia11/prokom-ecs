@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/penugasan', 'assignment');
     Route::post('/penugasan', 'submission');
     // Download Sertifikat
-    // Route::get('/certificate', 'certificate');
+    Route::get('/certificate', 'certificate');
   });
 });
 
@@ -65,6 +65,8 @@ Route::prefix('admin')->middleware('auth', 'checkRole:Admin')->group(function ()
     Route::get('/kelompok', 'groups');
     // Progress
     Route::get('/progress', 'progress');
+    Route::get('/passed/{certificate:user_id}', 'passed');
+    Route::get('/failed/{certificate:user_id}', 'failed');
   });
   // Pengumuman
   Route::resource('pengumuman', AnnouncementController::class)->parameter('pengumuman', 'announcement');

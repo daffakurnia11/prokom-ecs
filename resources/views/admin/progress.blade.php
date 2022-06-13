@@ -245,18 +245,19 @@
                     @endif
                   </td>
                   <td class="text-center">
-                    @php
-                      $decision = ($contribution / 9) * 100
-                    @endphp
-                    @if ($decision > 75)
-                      <span class="text-success">Lulus</span>
-                    @elseif ($decision >= 55 && $decision < 75)
-                      <span class="text-warning">Dipertimbangkan</span>
+                    @if ($user->certificate->status == "Lulus")
+                      <span class="text-success">{{ $user->certificate->status }}</span>
+                    @elseif ($user->certificate->status == "Dipertimbangkan")
+                      <span class="text-warning">
+                        {{ $user->certificate->status }}
+                        <a href="/admin/passed/{{ $user->id }}" class="text-success"><i class="bi bi-check-circle"></i></a>
+                        <a href="/admin/failed/{{ $user->id }}" class="text-danger"><i class="bi bi-x-circle"></i></a>
+                      </span>
                     @else
-                      <span class="text-danger">Tidak Lulus</span>
+                      <span class="text-danger">{{ $user->certificate->status }}</span>
                     @endif
                   </td>
-                  <td class="text-center">{{ intval($decision) }}%</td>
+                  <td class="text-center">{{ $user->certificate->progress }}%</td>
                 </tr>
               @endforeach
             </tbody>

@@ -118,6 +118,24 @@ if (flashdata) {
       confirmButtonColor: '#c6384d',
     })
   }
+  // User passed
+  if (flashdata == 'User passed') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Peserta telah diloloskan dalam pelatihan!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
+  // User failed
+  if (flashdata == 'User failed') {
+    Swal.fire({
+      icon: 'success',
+      title: flashdata,
+      text: 'Peserta tidak diloloskan dalam pelatihan!',
+      confirmButtonColor: '#c6384d',
+    })
+  }
 }
 
 $(function () {

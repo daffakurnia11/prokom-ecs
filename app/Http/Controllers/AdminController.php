@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Announcement;
+use App\Models\Certificate;
 use App\Models\Group;
 use App\Models\Participant;
 use App\Models\Presence;
 use App\Models\Schedule;
 use App\Models\Submission;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -80,6 +79,23 @@ class AdminController extends Controller
             'users'         => User::where('roles', 'Member')->orderBy('student_number')->get(),
             'presences'     => Presence::all(),
             'submissions'   => Submission::all(),
+            'certificates'  => Certificate::all()
         ]);
+    }
+
+    public function passed(Request $request, Certificate $certificate)
+    {
+        $certificate->update([
+            'status'    => "Lulus"
+        ]);
+        return redirect('admin/progress')->with('message', 'User passed');
+    }
+
+    public function failed(Request $request, Certificate $certificate)
+    {
+        $certificate->update([
+            'status'    => "Tidak Lulus"
+        ]);
+        return redirect('admin/progress')->with('message', 'User failed');
     }
 }
